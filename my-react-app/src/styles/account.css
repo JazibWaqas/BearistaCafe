@@ -1,0 +1,119 @@
+
+body {
+    font-family: 'Arial', sans-serif, 'Georgia', serif; /* 'Arial' for body text, 'Georgia' as fallback serif */
+    background-color: #A37B73FF; /* Light brown */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #5C4033; /* Dark brown */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ---------- Account Page Container ---------- */
+.account-container {
+    width: 50%;
+    background: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Section Styling ---------- */
+.section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #5C4033; /* Dark brown */
+}
+
+h2, h3 {
+    text-align: center;
+    color: #5C4033; /* Dark brown */
+    font-family: 'Georgia', serif; /* Apply 'Georgia' to headings */
+}
+
+/* ---------- Form Styling (Name, Contact, Address, Area) ---------- */
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #5C4033; /* Dark brown */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px; /* Space between fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9dddb; /* Light pink */
+}
+
+/* Styling for input focus */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border: 2px solid #5C4033; /* Dark brown */
+    box-shadow: 0 0 5px rgba(92, 64, 51, 0.5); /* Light glow */
+}
+
+textarea {
+    height: 100px; /* Larger text area for address */
+    resize: vertical;
+}
+
+/* ---------- Voucher Progress Circles ---------- */
+.voucher-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f9dddb; /* Light pink */
+    border: 2px solid #5C4033; /* Dark brown */
+    display: inline-block;
+}
+
+.circle.completed {
+    background-color: #5C4033; /* Dark brown */
+}
+
+
+
+/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+@media (max-width: 768px) {
+    /* Make account container full width on small screens */
+    .account-container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    /* Adjust font size for header navigation */
+    nav ul li a {
+        font-size: 30px;
+    }
+
+    /* Stack footer content vertically */
+    .footer-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+    }
+
+    .about-us,
+    .contact-us {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

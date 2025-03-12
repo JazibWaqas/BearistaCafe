@@ -1,10 +1,23 @@
-/* Flex Container for Header & Nav */
+/* Home page container */
+.home-page {
+  background-image: url("../assets/PINKCUPBG.png");
+  background-size: 45%;
+  background-position: right -7%;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-color: #A37B73FF;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header and Nav Container */
 .header-nav-container {
   display: flex;
   justify-content: space-between; 
   align-items: center; 
   padding: 10px 20px;
-  ; 
   width: 100%;
 }
 
@@ -17,36 +30,21 @@
   margin: 0; 
   padding: 14px 16px; 
 }
-/* ---------- Global Styles ---------- */
-body {
-  font-family: 'Arial', sans-serif; /* Body text font */
-  /* background-image: url("../images/Teddybg.png"); */
-  background-image: url("../assets/PINKCUPBG.png");
 
-  background-size: 45%; /* Reduce the size to 50% of its original */
-  background-position: right -7%; /* Adjust the percentage to make it up down etc lower is for up */
-  /* background-attachment: fixed; */
-
-  background-attachment: scroll;
-  background-repeat: no-repeat; /* Avoid tiling */
-  background-color: #A37B73FF; /* Light brown */
-  padding-bottom: 0px; /* Space for footer */
-  margin: 0;
-  flex-grow: 1;
-
+/* Main text styling */
+.body_text {
   font-size: 80px;
   color: #f9dddb; 
   text-align: left;
   margin-left: 10px;
   vertical-align: middle;
   float: left;
-
   position: relative;
 }
 
-/* ---------- Icon Styles ---------- */
+/* Icon Styles */
 .fas, .far, .fa, .href {
-  color: #5C4033; /* Dark brown */
+  color: #5C4033;
   font-size: 24px;
   margin-right: 10px;
   vertical-align: middle;
@@ -57,7 +55,7 @@ body {
   text-decoration: none;
 }
 
-/* ---------- Carousel Styling ---------- */
+/* Carousel Styling */
 .carousel {
   position: absolute;
   top: 55%;
@@ -68,48 +66,40 @@ body {
   z-index: 10;
 }
 
-
-
-/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+/* Responsive Styles (Mobile < 768px) */
 @media (max-width: 768px) {
-
   .container {
     width: 90%;
     padding: 15px;
-}
+  }
 
-/* Adjust font size in navigation for small screens */
-li a {
-    font-size: 30px;
-}
+  .body_text {
+    font-size: 24px;
+  }
 
   .carousel {
-      width: 70%;
-      right: 15%;
+    width: 70%;
+    right: 15%;
   }
+
   li a {
-      font-size: 30px;
+    font-size: 30px;
   }
 
   /* Stack footer content vertically */
   .footer-info {
-      flex-direction: column;
-      gap: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .footer-links ul {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .about-us,
   .contact-us {
-      flex: none;
-      width: 100%;
-      margin-bottom: 20px;
-  }
-  body {
-      font-size: 24px;
-      background-position: center;
+    flex: none;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
-

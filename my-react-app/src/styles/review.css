@@ -1,0 +1,101 @@
+.review-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #A37B73FF;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.review-page form {
+    max-width: 500px;
+    background-color: #d2a9a7;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-page h2 {
+    color: #5a4633;
+}
+
+.review-page label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #5C4033;
+}
+
+.review-page input, 
+.review-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.review-page textarea {
+    height: 80px;
+}
+
+.review-page .stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+    flex-direction: row-reverse;
+}
+
+.review-page .stars input {
+    display: none;
+}
+
+.review-page .stars label {
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+}
+
+.review-page .stars label:hover,
+.review-page .stars label:hover ~ label,
+.review-page .stars input:checked ~ label {
+    color: gold;
+}
+
+.review-page .radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.review-page .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+}
+
+.review-page .radio-group input {
+    margin: 0;
+}
+
+.review-page button {
+    background-color: #5C4033;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.review-page button:hover {
+    background-color: #3e2f22;
+}

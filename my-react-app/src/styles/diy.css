@@ -1,0 +1,128 @@
+/* ---------- Global Styles ---------- */
+body {
+    font-family: 'Arial', sans-serif, 'Georgia', serif; /* Arial for body text, Georgia for headings */
+    background-color: #A37B73FF; /* Light brown */
+    text-align: center;
+    padding: 0px;
+}
+
+
+/* ---------- Icon Styles ---------- */
+.fas, .far, .fa, .href {
+    color: #5C4033; /* Dark brown */
+    font-size: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+    float: right;
+}
+
+/* Links */
+.href {
+    text-decoration: none;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    background-color: #f9dddb; /* Light pink */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #f9dddb; /* Light pink */
+    min-width: 160px;
+    z-index: 1;
+}
+
+/* ---------- Container for Form/Content ---------- */
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: #f9dddb; /* Light pink */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Step Screen ---------- */
+#start-screen {
+    display: block;
+}
+
+.step {
+    display: none;
+}
+
+:target {
+    display: block;
+}
+
+/* ---------- Form Elements ---------- */
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    font-family: 'Georgia', serif; /* Use Georgia for labels */
+}
+
+/* Navigation Buttons */
+.next, .back, .start {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+}
+
+.next {
+    background-color: #5b3a29; /* Dark brown */
+}
+
+.back {
+    background-color: #b5651d; /* Light brown */
+}
+
+.start {
+    background-color: #008CBA; /* Blue */
+}
+
+.next:hover, .back:hover, .start:hover {
+    opacity: 0.8;
+}
+
+
+/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+@media (max-width: 768px) {
+    /* Adjust container width for small screens */
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Adjust font size in navigation for small screens */
+    li a {
+        font-size: 30px;
+    }
+
+    /* Stack footer content vertically */
+    .footer-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+    }
+
+    .about-us,
+    .contact-us {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,43 @@
+/* ---------- Global Styles ---------- */
+body {
+    font-family: 'Arial', sans-serif, 'Georgia', serif; /* Arial for general text, Georgia for headings */
+    text-align: center;
+    background-color: #A37B73FF; /* Light brown */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ---------- FAQ Container ---------- */
+.faq-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+/* ---------- Details Styling (FAQ Items) ---------- */
+details {
+    background: #d2a9a7; /* Light pink */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Georgia', serif; /* Apply Georgia for summary text */
+}
+
+/* ---------- Form Styling ---------- */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background: #d2a9a7; /* Light pink */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
