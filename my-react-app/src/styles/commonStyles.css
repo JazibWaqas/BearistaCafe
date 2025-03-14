@@ -24,7 +24,8 @@ ul {
   }
   
   li a:hover {
-    background-color: #111; /* Black */
+    background-color:black; /* Black */
+    color:  #A37B73FF;
   }
 
 

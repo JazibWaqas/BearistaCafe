@@ -1,0 +1,406 @@
+.fas, .far, .fa, .href {
+  color: #5C4033; /* Dark brown */
+  font-size: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+  float: right;
+}
+
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      background-color: #f9dddb;
+    }
+
+    
+    /* Style the dropdown menu items */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9dddb;
+      min-width: 160px;
+      z-index: 1;
+    }
+    div.top-strip {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: none;
+    height: 50px;
+    position:cover ;
+    size: cover;
+    
+    }
+    .search-container {
+      position: absolute; 
+      top: 100px; 
+      left: 20px; 
+      width: 200px; 
+  }
+  
+  .search-bar {
+      width: 100%; /* Fill the container */
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9dddb; /* Light pink */
+  }
+  .page-wrapper {
+    display: flex; /* Ensures vertical menu and menu items are side by side */
+    align-items: flex-start; /* Aligns everything to the top */
+}
+.vertical-menu {
+  position: sticky; /* Stays in place when scrolling */
+  top: 120px; /* Moves it slightly down */
+  left: 0;
+  width: 200px; /* Fixed width */
+  height: 70vh;
+  overflow-y: auto;
+  background-color: #f9dddb;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+    
+    .vertical-menu a {
+      
+      background-color: transparent;
+      color: black;
+      font-size: 1.2rem; 
+      font-weight: bold;
+      display: block;
+      padding: 15px;
+      margin-bottom: 10px; 
+      text-decoration: none;
+      border-radius: 8px; 
+      text-align: center; 
+    }
+    
+    .vertical-menu a:hover {
+      background-color: #ccc;
+    }
+    
+    .vertical-menu a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    #gallery h2 {
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 40px 0 20px 0;
+      padding: 10px;
+      background-color: #f8d7da; 
+      color: #5a2d0c; 
+      border-radius: 10px;
+    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #A37B73FF;
+    padding-bottom: 50px;
+}
+
+  body, html {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+  }
+  h1 {
+    color: #5C4033;
+    font-weight: bold;
+    text-align: center;
+  }
+  .container {
+    background-color: transparent !important;
+    display: flex; 
+    align-items: flex-start; /* Aligns content at the top */
+    margin: 0 auto; /* Centers the container */
+    padding: 20px;
+    gap: 20px; /* Space between the menu and gallery */
+    width: 90vw; /* Increase width to 90% of the viewport width */
+    max-width: 800px; /
+    
+  }
+  
+  /* Vertical Navigation Menu */
+  
+  /* Gallery Section */
+ /* Fix gallery to align items in a single row */
+ #gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items */
+  gap: 20px; /* Space between items */
+}
+
+.box {
+  width: calc(33.33% - 20px); /* 3 items per row */
+  max-width: 300px; /* Optional: Limit max width */
+  background-color: #f9dddb;
+}
+
+  
+  .box img {
+    width: 40%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .box p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #333;
+  }
+  .box:hover {
+    transform: scale(1.1); /* Pop-out effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More shadow for depth */
+}
+.Lattes {
+  font-size: 22px;  /* Adjust size */
+  font-weight: bold;
+  text-align: left;  /* Aligns heading to the left */
+  margin: 20px 0 10px 20px;  /* Adds spacing */
+  padding-left: 10px;
+  color: #4a2e2a;  /* Adjust color to match theme */
+} 
+
+/* Modal container styles */
+/* Modal Container */
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  z-index: 1000;
+  width: 80vw;
+  max-width: 1000px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.modal-header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+/* Body: Splitting Image & Selections */
+.modal-body {
+  display: flex;
+  flex-direction: row; /* Image on left, selections on right */
+  gap: 30px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image Container (Left Side) */
+.modal-image-container {
+  flex: 1; /* Image takes 1/3 width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #f8f8f8;
+  border-color: #f9dddb;
+  border-radius: 2px;
+}
+
+/* Image */
+.modal-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Right Side Content (Selections) */
+.modal-content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 75vh;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Scrollbar */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Option Sections */
+.size-options,
+.milk-options,
+.sweetness-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+/* Labels */
+.size-options label,
+.milk-options label,
+.sweetness-options label {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Close Button */
+.special-instructions {
+  width: 100%; /* Makes it take the full width of its container */
+  height: 400px; /* Adjust height for better usability */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allows resizing only in the vertical direction */
+}
+
+/* Ensures the text box is aligned properly */
+.modal-content p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Style the Close button */
+#closeModal {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#closeModal:hover {
+  background: #c9302c;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Add to Cart Button */
+#addToCart {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background:#f9dddb; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#addToCart:hover {
+  background: #f9dddb;
+}
+
+/* shwoing the price styling  */
+.modal-image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.modal-image-container img {
+  width: 100%; /* Ensures consistent image size */
+  height: auto;
+  display: block;
+}
+
+.price-overlay {
+  position: absolute;
+  top: 10px; /* Moves price to the very top */
+  left: 50%;
+  transform: translateX(-50%); /* Centers price horizontally */
+  background: rgba(0, 0, 0, 0.7); /* Dark background for visibility */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+
+
+
+/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+@media (max-width: 768px) {
+  /* Make account container full width on small screens */
+  .account-container {
+      width: 90%;
+      padding: 20px;
+  }
+  
+  /* Adjust font size for header navigation */
+  nav ul li a {
+      font-size: 30px;
+  }
+
+  /* Stack footer content vertically */
+  .footer-info {
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .footer-links ul {
+      flex-direction: column;
+  }
+
+  .about-us,
+  .contact-us {
+      flex: none;
+      width: 100%;
+      margin-bottom: 20px;
+  }
+}

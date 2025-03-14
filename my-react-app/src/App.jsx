@@ -5,6 +5,7 @@ import FAQ from './pages/FAQ';
 import DIY from './pages/DIY';
 import Account from './pages/Account';
 import Login from './pages/Login';
+import Menu from './pages/menu'; // Import the Menu component
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/diy" element={<DIY />} />
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/menu" element={<Menu />} /> {/* Added Menu Route */}
       </Routes>
     </Router>
   );
