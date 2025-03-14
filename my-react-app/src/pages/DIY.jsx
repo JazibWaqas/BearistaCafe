@@ -39,9 +39,8 @@ export default function DIY() {
 
   return (
     <div className="diy-page">
-      <TopStrip />
       <Header />
-
+      <TopStrip />
       <div className="diy_container">
         <h1>Build Your Own Coffee ☕</h1>
 
