@@ -1,58 +1,20 @@
-/* Home page container */
+/* Home Page Styling */
 .home-page {
   background-image: url("../assets/PINKCUPBG.png");
   background-size: 45%;
   background-position: right -7%;
   background-attachment: scroll;
   background-repeat: no-repeat;
-  background-color: #A37B73FF;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Header and Nav Container */
-.header-nav-container {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 10px 20px;
-  width: 100%;
-}
-
-/* Café Name */
-.header-text {
-  font-size: 40px; 
-  font-weight: bold;
-  color: #5C4033;
-  font-family: 'Georgia', serif;
-  margin: 0; 
-  padding: 14px 16px; 
-}
-
-/* Main text styling */
+/* Main Text Styling */
 .body_text {
   font-size: 80px;
   color: #f9dddb; 
   text-align: left;
   margin-left: 10px;
-  vertical-align: middle;
-  float: left;
   position: relative;
-}
-
-/* Icon Styles */
-.fas, .far, .fa, .href {
-  color: #5C4033;
-  font-size: 24px;
-  margin-right: 10px;
-  vertical-align: middle;
-  float: right;
-}
-
-.href {
-  text-decoration: none;
 }
 
 /* Carousel Styling */
@@ -68,38 +30,12 @@
 
 /* Responsive Styles (Mobile < 768px) */
 @media (max-width: 768px) {
-  .container {
-    width: 90%;
-    padding: 15px;
-  }
-
   .body_text {
-    font-size: 24px;
+      font-size: 24px;
   }
 
   .carousel {
-    width: 70%;
-    right: 15%;
-  }
-
-  li a {
-    font-size: 30px;
-  }
-
-  /* Stack footer content vertically */
-  .footer-info {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .footer-links ul {
-    flex-direction: column;
-  }
-
-  .about-us,
-  .contact-us {
-    flex: none;
-    width: 100%;
-    margin-bottom: 20px;
+      width: 70%;
+      right: 15%;
   }
 }

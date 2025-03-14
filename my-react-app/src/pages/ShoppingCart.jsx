@@ -64,9 +64,8 @@ export default function ShoppingCart() {
 
   return (
     <div className="cart-page">
-      <TopStrip />
       <Header />
-
+      <TopStrip />
       <div className="cart-container">
         <h2>Your Cart</h2>
         

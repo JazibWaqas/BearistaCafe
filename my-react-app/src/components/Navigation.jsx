@@ -1,12 +1,14 @@
 export default function Navigation() {
-    return (
-      <nav>
-        <ul>
-          <li><a href="/account">Account</a></li>
-          <li><a href="/diy">DIY</a></li>
-          <li><a href="/menu">Menu</a></li>
-          <li><a href="/">Home</a></li>
+  return (
+    <nav className="navbar navbar-expand-md">
+      <div className="container">
+        <ul className="navbar-nav ms-auto">
+        <li className="nav-item"><a className="nav-link" href="/">Home</a></li>
+        <li className="nav-item"><a className="nav-link" href="/menu">Menu</a></li>
+        <li className="nav-item"><a className="nav-link" href="/diy">DIY</a></li>
+        <li className="nav-item"><a className="nav-link" href="/account">Account</a></li>
         </ul>
-      </nav>
-    );
-  }
+      </div>
+    </nav>
+  );
+}
