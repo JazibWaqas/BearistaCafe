@@ -1,6 +1,6 @@
 
 import "../styles/commonStyles.css";  
-// import "../styles/menu.css";
+import "../styles/menu.css";
 import "../styles/review.css";  // Review Section
 import "../styles/faq.css";  // FAQ Section
 import React, { useState } from "react";
@@ -35,7 +35,7 @@ const Menu = () => {
       </div>
 
       {/* Page Content */}
-      <div className="page-wrapper">
+      <div className="content-container">
         {/* Left Sidebar - Categories */}
         <div className="vertical-menu">
           <a href="#Classics">Classics</a>
@@ -46,9 +46,9 @@ const Menu = () => {
           <a href="#Hot">Hot</a>
           <a href="#Bakery_Items">Bakery Items</a>
         </div>
-        </div>
-    <div className="container">
-        <section id="gallery">
+
+
+    <div className="gallery">
       {/* CLASSICS */}
       <h2 id="Classics">Classics</h2>
       <div className="box" data-id="1" data-name="Americano" data-price="300" data-image="americano.webp">
@@ -237,7 +237,8 @@ const Menu = () => {
         <p>Teddy Bites</p>
         <button class="add-to-cart">Add to Cart</button>
       </div>
-    </section>
+    {/* </section> */}
+      </div>
       </div>
       
 

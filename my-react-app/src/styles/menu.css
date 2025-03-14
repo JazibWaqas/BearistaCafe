@@ -32,54 +32,60 @@
     size: cover;
     
     }
-    .search-container {
-      position: absolute; 
-      top: 100px; 
-      left: 20px; 
-      width: 200px; 
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      background-color: #A37B73FF; /* Light brown */
   }
-  
-  .search-bar {
-      width: 100%; /* Fill the container */
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9dddb; /* Light pink */
-  }
-  .page-wrapper {
-    display: flex; /* This will line up children elements side by side */
-    flex-wrap: nowrap; /* Prevents wrapping to ensure side-by-side alignment */
-    align-items: flex-start; /* Align items at the top */
-    padding: 20px; /* Add padding around the entire content area */
-    gap: 20px; /* Adds space between vertical menu and gallery */
-    height: 100vh; /* Ensures the parent has height for sticky positioning */
+  .search-container {
+    position: absolute; /* Places the search bar separately */
+    top: 100px; /* Adjust as needed */
+    left: 20px; /* Aligns it with the sidebar */
+    width: 200px; /* Make sure it doesn’t stretch with the menu */
+}
+.search-bar {
+  width: 100%; /* Fill the container */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9dddb; /* Light pink */
+}
+.content-container {
+  display: flex; /* Enables flexbox */
+  padding: 20px;
+  gap: 20px; /* Space between menu and gallery */
 }
 .vertical-menu {
-  width: 200px; /* Fixed width for the menu */
-  flex-shrink: 0; /* Prevents the menu from shrinking */
-  height: auto; /* Allows the menu to grow as needed */
-  background-color: #f9dddb; /* Ensures background is consistent */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto; /* Allows scrolling within the menu */
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow-y: auto; 
+  width: 250px;
+  height: 70vh;
+  scrollbar-color: pink;
+  padding: 20px; /* Adds some padding around the menu container */
+  border-radius: 15px; /* Rounded corners for the entire menu */
+  background-color: #f9dddb;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 
     
-    .vertical-menu a {
-      
-      background-color: transparent;
-      color: black;
-      font-size: 1.2rem; 
-      font-weight: bold;
-      display: block;
-      padding: 15px;
-      margin-bottom: 10px; 
-      text-decoration: none;
-      border-radius: 8px; 
-      text-align: center; 
-    }
+.vertical-menu a {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+}
     
     .vertical-menu a:hover {
       background-color: #ccc;
@@ -90,17 +96,13 @@
       color: white;
     }
 
-    #gallery h2 {
-      width: 100%;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 40px 0 20px 0;
-      padding: 10px;
-      background-color: #f8d7da; 
-      color: #5a2d0c; 
-      border-radius: 10px;
-    }
+    .gallery {
+      flex-grow: 1; /* Allows the gallery to take up remaining space */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+  }
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -108,11 +110,7 @@ body {
     padding-bottom: 50px;
 }
 
-  body, html {
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-  }
+  
   h1 {
     color: #5C4033;
     font-weight: bold;
@@ -122,35 +120,51 @@ body {
     flex-grow: 1; /* Allows the container to take up remaining space */
     display: flex; /* Enables flexbox in the content area */
     flex-direction: column; /* Stacks content vertically */
-    align-items: center; /* Centers items horizontally */
+    align-items: right; /* Centers items horizontally */
     max-width: 800px; /* Maximum width of the content area */
     background-color: transparent; 
+  }
+   h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 40px 0 20px 0;
+    padding: 10px;
+    background-color: #f8d7da; 
+    color: #5a2d0c; 
+    border-radius: 10px;
   }
   
   /* Vertical Navigation Menu */
   
   /* Gallery Section */
  /* Fix gallery to align items in a single row */
- #gallery {
+ .gallery {
   display: flex;
+  flex-direction: row; /* Organize items in a column */
   flex-wrap: wrap;
-  justify-content: center; /* Center the items */
-  gap: 20px; /* Space between items */
+  justify-content: center;
+  gap: 20px;
+  width: 100%; /* Takes full available width */
 }
 
 .box {
-  width: calc(33.33% - 20px); /* 3 items per row */
-  max-width: 300px; /* Optional: Limit max width */
+  flex: 0 0 230px; /* Prevents flex shrinking and maintains width */
   background-color: #f9dddb;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
   
-  .box img {
-    width: 40%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
+.box img {
+  width: 40%;
+  height: 50%;
+  border-radius: 5px;
+}
   
   .box p {
     margin-top: 10px;
@@ -376,6 +390,9 @@ body {
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */
 @media (max-width: 768px) {
   /* Make account container full width on small screens */
+  .content-container {
+    flex-direction: column; /* Stacks elements vertically on small screens */
+}
   .account-container {
       width: 90%;
       padding: 20px;
@@ -385,7 +402,9 @@ body {
   nav ul li a {
       font-size: 30px;
   }
-
+  .vertical-menu, .gallery {
+    width: 100%; /* Full width for mobile */
+}
   /* Stack footer content vertically */
   .footer-info {
       flex-direction: column;
