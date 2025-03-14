@@ -47,20 +47,22 @@
       background-color: #f9dddb; /* Light pink */
   }
   .page-wrapper {
-    display: flex; /* Ensures vertical menu and menu items are side by side */
-    align-items: flex-start; /* Aligns everything to the top */
+    display: flex; /* This will line up children elements side by side */
+    flex-wrap: nowrap; /* Prevents wrapping to ensure side-by-side alignment */
+    align-items: flex-start; /* Align items at the top */
+    padding: 20px; /* Add padding around the entire content area */
+    gap: 20px; /* Adds space between vertical menu and gallery */
+    height: 100vh; /* Ensures the parent has height for sticky positioning */
 }
 .vertical-menu {
-  position: sticky; /* Stays in place when scrolling */
-  top: 120px; /* Moves it slightly down */
-  left: 0;
-  width: 200px; /* Fixed width */
-  height: 70vh;
-  overflow-y: auto;
-  background-color: #f9dddb;
+  width: 200px; /* Fixed width for the menu */
+  flex-shrink: 0; /* Prevents the menu from shrinking */
+  height: auto; /* Allows the menu to grow as needed */
+  background-color: #f9dddb; /* Ensures background is consistent */
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Allows scrolling within the menu */
 }
 
 
@@ -117,15 +119,12 @@ body {
     text-align: center;
   }
   .container {
-    background-color: transparent !important;
-    display: flex; 
-    align-items: flex-start; /* Aligns content at the top */
-    margin: 0 auto; /* Centers the container */
-    padding: 20px;
-    gap: 20px; /* Space between the menu and gallery */
-    width: 90vw; /* Increase width to 90% of the viewport width */
-    max-width: 800px; /
-    
+    flex-grow: 1; /* Allows the container to take up remaining space */
+    display: flex; /* Enables flexbox in the content area */
+    flex-direction: column; /* Stacks content vertically */
+    align-items: center; /* Centers items horizontally */
+    max-width: 800px; /* Maximum width of the content area */
+    background-color: transparent; 
   }
   
   /* Vertical Navigation Menu */

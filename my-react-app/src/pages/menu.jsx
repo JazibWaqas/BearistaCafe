@@ -1,6 +1,6 @@
 
 import "../styles/commonStyles.css";  
-import "../styles/menu.css";
+// import "../styles/menu.css";
 import "../styles/review.css";  // Review Section
 import "../styles/faq.css";  // FAQ Section
 import React, { useState } from "react";

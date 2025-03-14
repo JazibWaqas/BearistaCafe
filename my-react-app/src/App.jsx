@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Review from './pages/Review';
 import FAQ from './pages/FAQ';
-import DIY from './pages/DIY';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Menu from './pages/menu'; // Import the Menu component
+import DIY from './pages/DIY';
 import ShoppingCart from './pages/ShoppingCart';
 
 function App() {

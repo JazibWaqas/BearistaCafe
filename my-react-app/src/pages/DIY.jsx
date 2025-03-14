@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import TopStrip from '../components/TopStrip';
 import Footer from '../components/Footer';
+import "../styles/diy.css";
+
+
 
 export default function DIY() {
   const [currentStep, setCurrentStep] = useState('start');
@@ -39,7 +42,7 @@ export default function DIY() {
       <TopStrip />
       <Header />
 
-      <div className="container">
+      <div className="diy_container">
         <h1>Build Your Own Coffee ☕</h1>
 
         {/* Start Screen */}
