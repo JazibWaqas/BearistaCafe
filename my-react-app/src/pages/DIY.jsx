@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import TopStrip from '../components/TopStrip';
@@ -11,7 +11,10 @@ export default function DIY() {
     milk: '',
     syrups: [],
     extras: []
-  });
+  })
+  
+  
+  ;
 
   const handleInputChange = (e, type) => {
     const { name, value, checked } = e.target;
