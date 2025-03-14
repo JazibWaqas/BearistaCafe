@@ -1,15 +1,15 @@
 /* ---------- Global Styles ---------- */
 body {
-    font-family: 'Arial', sans-serif, 'Georgia', serif; /* Arial for body text, Georgia for headings */
+    font-family: 'Arial', sans-serif, 'Georgia', serif;
     background-color: #A37B73FF; /* Light brown */
     text-align: center;
     padding: 0px;
+    margin: 0;
 }
-
 
 /* ---------- Icon Styles ---------- */
 .fas, .far, .fa, .href {
-    color: #5C4033; /* Dark brown */
+    color: #5C4033;
     font-size: 24px;
     margin-right: 10px;
     vertical-align: middle;
@@ -21,62 +21,72 @@ body {
     text-decoration: none;
 }
 
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    background-color: #f9dddb; /* Light pink */
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    background-color: #f9dddb; /* Light pink */
-    min-width: 160px;
-    z-index: 1;
-}
-
 /* ---------- Container for Form/Content ---------- */
 .container {
     max-width: 400px;
     margin: auto;
-    background: #f9dddb; /* Light pink */
+    background: #f9dddb;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* ---------- Step Screen ---------- */
-#start-screen {
-    display: block;
-}
-
 .step {
-    display: none;
-}
-
-:target {
     display: block;
+    text-align: left;
+    padding: 10px;
+}
+.container .step input[type="radio"] {
+    width: auto; /* Override the width to prevent stretching */
+    padding: 0; /* Override padding */
+    margin-right: 10px; /* Keep your original margin */
+    margin-top: 0; /* Align with the text */
+    background-color: transparent; /* Ensures no background interference */
+    border: none; } /* Removes any border that might be applied */
+
+.container .step input[type="checkbox"] {
+    width: auto; /* Override any full-width settings */
+    margin-right: 10px; /* Space between the checkbox and the label text */
+    margin-top: 0; /* Ensure vertical alignment is centered */
+    padding: 0; /* Remove any unwanted padding */
+    background-color: transparent; /* Ensures no background color is interfering */
+    border: none; /* Removes any border */
+    vertical-align: middle; /* Helps align checkboxes with the text vertically */
 }
 
-/* ---------- Form Elements ---------- */
+
+    /* ---------- Form Elements ---------- */
 label {
-    display: block;
+    display: flex;
+    align-items: center;
     margin: 10px 0;
     font-size: 18px;
-    font-family: 'Georgia', serif; /* Use Georgia for labels */
+    /* font-family: 'Georgia', serif; */
+    cursor: pointer;
 }
 
-/* Navigation Buttons */
-.next, .back, .start {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 10px;
+
+input[type="radio"] {
+    order: -1; /* Positions the radio button before the label text */
+    margin-right: 10px; /* Space between the radio and the label text */
+    margin-top: 0; /* Ensure alignment is centered vertically */
+}
+
+/* ---------- Navigation Buttons (Side by Side) ---------- */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.next, .back {
+    padding: 12px 20px;
     text-decoration: none;
     font-size: 16px;
     border-radius: 5px;
     color: white;
+    width: 48%; /* Ensure buttons take up half the width */
 }
 
 .next {
@@ -95,34 +105,15 @@ label {
     opacity: 0.8;
 }
 
-
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */
 @media (max-width: 768px) {
-    /* Adjust container width for small screens */
     .container {
         width: 90%;
         padding: 15px;
     }
 
-    /* Adjust font size in navigation for small screens */
-    li a {
-        font-size: 30px;
-    }
-
-    /* Stack footer content vertically */
-    .footer-info {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .footer-links ul {
-        flex-direction: column;
-    }
-
-    .about-us,
-    .contact-us {
-        flex: none;
-        width: 100%;
-        margin-bottom: 20px;
+    input[type="radio"], input[type="checkbox"], .next, .back, .start {
+        width: 100%; /* Full width on small screens */
+        margin: 10px 0;
     }
 }
