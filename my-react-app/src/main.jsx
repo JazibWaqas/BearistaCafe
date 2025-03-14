@@ -8,6 +8,8 @@ import './styles/faq.css'
 import './styles/diy.css'
 import './styles/account.css'
 import './styles/login.css'
+import './styles/shoppingCart.css'
+import './styles/menu.css'
 
 import App from './App.jsx'
 

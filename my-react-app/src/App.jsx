@@ -6,6 +6,7 @@ import DIY from './pages/DIY';
 import Account from './pages/Account';
 import Login from './pages/Login';
 import Menu from './pages/menu'; // Import the Menu component
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/menu" element={<Menu />} /> {/* Added Menu Route */}
+        <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
     </Router>
   );

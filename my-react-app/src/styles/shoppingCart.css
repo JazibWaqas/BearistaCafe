@@ -1,0 +1,280 @@
+/* ---------- Global Styles ---------- */
+body {
+    font-family: 'Arial', sans-serif; /* Primary font */
+    background-color: #A37B73FF; /* Light brown */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #5C4033; /* Dark brown */
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Icons & Links ---------- */
+.fas, .far, .href {
+    color: #5C4033;
+    font-size: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.href {
+    float: right;
+    text-decoration: none;
+}
+
+/* ---------- Search Bar (If Used) ---------- */
+.search-container {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    width: 200px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9dddb; /* Light pink */
+}
+
+/* ---------- Shopping Cart Container & Elements ---------- */
+.cart-container {
+    width: 40%;
+    background: white;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #5C4033;
+    font-family: 'Georgia', serif;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ---------- Cart Items ---------- */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.item-details {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.size {
+    font-style: italic;
+    font-size: 14px;
+    color: #777;
+}
+
+.item-price {
+    font-size: 16px;
+    color: #5C4033;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+}
+
+/* ---------- Remove Item Button ---------- */
+.delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5C4033;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.delete:hover {
+    color: #c0392b;
+}
+
+/* ---------- Quantity Input ---------- */
+input[type="number"] {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ---------- Add More Items Link ---------- */
+.add-more {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.add-more a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5C4033;
+}
+
+/* ---------- Cart Summary & Checkout ---------- */
+.cart-summary {
+    border-top: 2px solid #5C4033;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.grand-total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ---------- Delivery Options ---------- */
+.delivery-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.option {
+    background: none;
+    border: 2px solid #5C4033;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.option.active {
+    background: #5C4033;
+    color: white;
+}
+
+/* ---------- Coupon Section ---------- */
+.coupon-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.coupon-section input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.apply-coupon {
+    background: #5C4033;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ---------- Checkout Button ---------- */
+.checkout-btn {
+    width: 100%;
+    background: #5C4033;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.checkout-btn:hover {
+    background: #3e2a1f;
+}
+
+/* ---------- Pickup Info ---------- */
+.pickup-info {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.pickup-info strong {
+    font-size: 16px;
+}
+
+
+
+/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+@media (max-width: 768px) {
+    /* Make form width responsive */
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Adjust font size for navigation links */
+    li a {
+        font-size: 30px;
+    }
+
+    /* Stack footer content vertically */
+    .footer-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+    }
+
+    .about-us,
+    .contact-us {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Reduce size of text fields on mobile */
+    input, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Reduce button size for smaller screens */
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
