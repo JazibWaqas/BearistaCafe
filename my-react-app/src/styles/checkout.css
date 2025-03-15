@@ -1,18 +1,19 @@
-
+/* ---------- Global Styles ---------- */
 body {
-    font-family: 'Arial', sans-serif, 'Georgia', serif; /* 'Arial' for general text and 'Georgia' as a fallback serif font */
-    background-color: #A37B73; /* Light brown */
+    font-family: 'Arial', sans-serif, 'Georgia', serif;
+    background-color: #A37B73;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: #5C4033; /* Dark brown */
+    color: #5C4033;
     margin: 0;
     padding: 0;
 }
 
 /* ---------- Checkout Page Container ---------- */
 .checkout-container {
-    width: 40%;
+    width: 50%;
+    max-width: 700px; /* Prevent it from being too large */
     background: white;
     margin: 50px auto;
     padding: 30px;
@@ -24,81 +25,67 @@ body {
 .section {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #5C4033; /* Dark brown */
+    border-bottom: 2px solid #5C4033;
 }
 
 h2, h3 {
     text-align: center;
-    color: #5C4033; /* Dark brown */
-    font-family: 'Georgia', serif; /* Use serif font for headings */
+    color: #5C4033;
+    font-family: 'Georgia', serif;
 }
 
-/* ---------- Form Styling (Name, Contact, Address, Area) ---------- */
+/* ---------- Form Styling ---------- */
 label {
     display: block;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #5C4033; /* Dark brown */
+    color: #5C4033;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px; /* Space between fields */
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #f9dddb; /* Light pink */
+    background-color: #f9dddb;
 }
 
 textarea {
-    height: 80px; /* Larger text area for address */
+    height: 80px;
     resize: none;
 }
 
-/* ---------- Payment Section ---------- */
-.payment-section {
-    background: #f9f9f9; /* Light gray */
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.payment-section label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #5C4033; /* Dark brown */
-}
-
-/* ---------- Order Summary Section ---------- */
-.order-summary {
-    border-top: 2px solid #5C4033; /* Dark brown */
+/* ---------- Order Summary ---------- */
+.cart-summary {
+    border-top: 2px solid #5C4033;
     padding-top: 10px;
     margin-bottom: 20px;
-}
-
-.order-summary p {
-    display: flex;
-    justify-content: space-between;
     font-size: 16px;
 }
 
-.order-summary .grand-total {
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-summary .grand-total {
     font-weight: bold;
     font-size: 18px;
 }
 
-/* ---------- Order Items List ---------- */
+/* ---------- Order Items ---------- */
 .order-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #f9f9f9; /* Light gray */
+    background: #f9f9f9;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
+    flex-wrap: wrap;
 }
 
 .order-item img {
@@ -111,7 +98,7 @@ textarea {
 /* ---------- Place Order Button ---------- */
 .place-order-btn {
     width: 100%;
-    background: #5C4033; /* Dark brown */
+    background: #5C4033;
     color: white;
     border: none;
     padding: 14px;
@@ -119,38 +106,110 @@ textarea {
     font-size: 18px;
     cursor: pointer;
     margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .place-order-btn:hover {
-    background: #3e2a1f; /* Darker brown */
+    background: #3e2a1f;
+    transform: scale(1.05);
 }
 
+/* ---------- Pickup / Delivery Buttons ---------- */
+.delivery-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
-/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+.delivery-options button {
+    background: #5C4033;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delivery-options button:hover {
+    background: #3e2a1f;
+}
+
+/* ---------- Mobile & Tablet Responsive Styles ---------- */
+
+/* 📌 Tablet View (Below 1024px) */
+@media (max-width: 1024px) {
+    .checkout-container {
+        width: 75%;
+        padding: 25px;
+    }
+
+    .order-item {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+    }
+}
+
+/* 📌 Mobile View (Below 768px) */
 @media (max-width: 768px) {
-    /* Make checkout container full width on small screens */
     .checkout-container {
         width: 90%;
         padding: 20px;
     }
-    
-    nav ul li a {
-        font-size: 30px;
-    }
-    /* Stack footer content vertically */
-    .footer-info {
-        flex-direction: column;
-        gap: 20px;
+
+    h2, h3 {
+        font-size: 22px;
     }
 
-    .footer-links ul {
+    label {
+        font-size: 14px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .place-order-btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .delivery-options {
         flex-direction: column;
     }
 
-    .about-us,
-    .contact-us {
-        flex: none;
+    .delivery-options button {
         width: 100%;
-        margin-bottom: 20px;
+    }
+}
+
+/* 📌 Small Mobile View (Below 480px) */
+@media (max-width: 480px) {
+    .checkout-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h2, h3 {
+        font-size: 20px;
+    }
+
+    .order-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-item img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .place-order-btn {
+        font-size: 14px;
+        padding: 10px;
     }
 }
