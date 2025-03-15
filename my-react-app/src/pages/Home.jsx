@@ -1,27 +1,9 @@
-// import Header from '../components/Header';
-// import TopStrip from '../components/TopStrip';
-// import Footer from '../components/Footer';
-
-// export default function Home() {
-//   return (
-//     <div className="home-page container-fluid">
-//       <Header />
-//       <TopStrip />
-//       <div className="row align-items-center justify-content-start text-left">
-//         <div className="col-md-6">
-//           <h1 className="body_text">Your reason<br />to get out<br />of bed<br />today!</h1>
-//         </div>
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// }
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
-import Navigation from "../components/Navigation";  // ✅ Using your provided Navigation component
+import Navigation from "../components/Navigation";  
 import Header from '../components/Header';
 import Footer from "../components/Footer"; 
-import TopStrip from "../components/TopStrip";       // ✅ Using your provided Footer component
+import TopStrip from "../components/TopStrip";       
 import "../styles/Home.css";
 
 const Home = () => {
@@ -30,7 +12,7 @@ const Home = () => {
     <div>
       <Header />
 
-      <TopStrip />    {/* ✅ Common Top Strip */}
+      <TopStrip />  
       <section className="hero">
         <h1>Freshly Brewed Just For You!</h1>
         <p>Where coffee meets cuddles in a cozy teddy bear themed experience</p>
@@ -60,7 +42,7 @@ const Home = () => {
         </div>
       </section>
 
-      <Footer />  {/* ✅ Common Footer */}
+      <Footer /> 
     </div>
   );
 };
