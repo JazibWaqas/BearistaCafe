@@ -1,4 +1,15 @@
-/* Home Page Styling */
+/* 📌 General Styling */
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* 📌 Background Image for Desktop */
 .home-page {
   background-image: url("../assets/PINKCUPBG.png");
   background-size: 45%;
@@ -8,34 +19,188 @@
   min-height: 100vh;
 }
 
-/* Main Text Styling */
-.body_text {
-  font-size: 80px;
-  color: #f9dddb; 
-  text-align: left;
-  margin-left: 10px;
-  position: relative;
+/* 📌 Headings & Text */
+.hero h1 {
+  font-size: 32px;
+  font-weight: bold;
 }
 
-/* Carousel Styling */
-.carousel {
-  position: absolute;
-  top: 55%;
-  right: 10%;
-  transform: translate(0, -50%);
-  width: 472px;
+.hero p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* 📌 Image Container - Centering the Image */
+.image-container {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: transparent;
+  margin: 20px 0;
+}
+
+.image-container img {
+  width: 100%;
   height: auto;
-  z-index: 10;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Responsive Styles (Mobile < 768px) */
-@media (max-width: 768px) {
-  .body_text {
-      font-size: 24px;
+/* 📌 CTA Button */
+.menu-btn {
+  background-color: #8b5e34;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 📌 Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  background-color: #ffe6e6;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature {
+  background-color: #fff5f5;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 📌 Feature Icons */
+.feature i {
+  font-size: 40px;
+  color: #8b5e34;
+  margin-bottom: 10px;
+}
+
+.feature h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.feature p {
+  font-size: 16px;
+}
+
+/* 📌 Responsive Design */
+
+/* 📌 Tablet View */
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+    padding: 50px 20px;
   }
 
-  .carousel {
-      width: 70%;
-      right: 15%;
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 80%;
+  }
+
+  .menu-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* 📌 Mobile View */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .image-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  .menu-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .feature {
+    width: 90%;
+  }
+}
+
+/* 📌 Small Mobile View */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 12px;
+  }
+
+  .image-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .menu-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .feature {
+    width: 95%;
   }
 }

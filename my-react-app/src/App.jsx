@@ -4,7 +4,7 @@ import Review from './pages/Review';
 import FAQ from './pages/FAQ';
 import Account from './pages/Account';
 import Login from './pages/Login';
-import Menu from './pages/menu'; // Import the Menu component
+import Menu from './pages/menu'; // ✅ Fixed import: Ensure file name matches
 import DIY from './pages/DIY';
 import ShoppingCart from './pages/ShoppingCart';
 
@@ -18,7 +18,7 @@ function App() {
         <Route path="/diy" element={<DIY />} />
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/menu" element={<Menu />} /> {/* Added Menu Route */}
+        <Route path="/menu" element={<Menu />} /> {/* ✅ Ensure Menu page exists */}
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
     </Router>
