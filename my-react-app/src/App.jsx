@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Menu from './pages/menu'; // Import the Menu component
 import DIY from './pages/DIY';
 import ShoppingCart from './pages/ShoppingCart';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/menu" element={<Menu />} /> {/* Added Menu Route */}
         <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );

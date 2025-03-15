@@ -11,6 +11,7 @@ import './styles/account.css'
 import './styles/login.css'
 import './styles/shoppingCart.css'
 import './styles/menu.css'
+import './styles/checkout.css'
 
 import App from './App.jsx'
 
