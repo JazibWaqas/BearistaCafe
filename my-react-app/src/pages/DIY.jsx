@@ -15,6 +15,8 @@ export default function DIY() {
     syrups: [],
     extras: []
   })
+  const [cart, setCart] = useState([]);
+
   
   
   ;
@@ -23,9 +25,15 @@ export default function DIY() {
     const { name, value, checked } = e.target;
     
     if (type === 'radio') {
+      let price = 0;
+      if (value === "Like it HOT") price = 300;
+      else if (value === "Make it a Frappe") price = 500;
+      else if (value === "On The Rocks") price = 450;
+
       setOrderDetails(prev => ({
         ...prev,
-        [name]: value
+        [name]: value ,
+        price: Number(price) 
       }));
     } else if (type === 'checkbox') {
       setOrderDetails(prev => ({
@@ -36,6 +44,23 @@ export default function DIY() {
       }));
     }
   };
+
+
+  const addToCart = () => {
+  const newDrink = {
+    name: `DIY - ${orderDetails.base}`,  
+    price: orderDetails.price, 
+    quantity : 1 ,
+    details: {...orderDetails}
+  };
+
+    const updatedCart = [...cart, newDrink];
+    setCart(updatedCart);
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    alert(`Your custom drink '${newDrink.name}' for Rs. ${newDrink.price}' has been added to your cart!`);
+  };
+
 
   return (
     <div className="diy-page">
@@ -62,11 +87,11 @@ export default function DIY() {
               <input 
                 type="radio" 
                 name="base" 
-                value="Hot Espresso Shot" 
-                checked={orderDetails.base === "Hot Espresso Shot"}
+                value="Like it HOT" 
+                checked={orderDetails.base === "Like it HOT"}
                 onChange={(e) => handleInputChange(e, 'radio')} 
                 required 
-              /> Like It HOT
+              /> Like it HOT    (Rs.300)
             </label>
             <label>
               <input 
@@ -76,7 +101,7 @@ export default function DIY() {
                 checked={orderDetails.base === "Make it a Frappe"}
                 onChange={(e) => handleInputChange(e, 'radio')} 
                 required 
-              /> Make it a Frappe
+              /> Make it a Frappe     (Rs.500)
             </label>
             <label>
               <input 
@@ -86,7 +111,7 @@ export default function DIY() {
                 checked={orderDetails.base === "On The Rocks"}
                 onChange={(e) => handleInputChange(e, 'radio')} 
                 required 
-              /> On The Rocks
+              /> On The Rocks     (Rs.450)
             </label>
             <div className="navigation">
               <button className="back" onClick={() => setCurrentStep('start')}>← Back</button>
@@ -175,7 +200,7 @@ export default function DIY() {
             ))}
             <div className="navigation">
               <button className="back" onClick={() => setCurrentStep('step3')}>← Back</button>
-              <button className="next" onClick={() => setCurrentStep('summary')}>Finish ➝</button>
+              <button className="next" onClick={() => setCurrentStep('summary')}>Next ➝</button>
             </div>
           </div>
         )}
@@ -184,7 +209,8 @@ export default function DIY() {
         {currentStep === 'summary' && (
           <div className="step">
             <h2>Order Summary</h2>
-            <p>Thank you for customizing your coffee! Your order has been placed!!</p>
+            <p>Thank you for customizing your coffee! Click to add your DIY coffe to your cart !!</p>
+            <button className = "add-to-cart-button" onClick={addToCart}>Add to Cart</button>
             <Link to="/cart" className="back">View Cart</Link>
           </div>
         )}

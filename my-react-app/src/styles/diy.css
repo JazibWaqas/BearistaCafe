@@ -97,6 +97,9 @@ input[type="radio"] {
     background-color: #b5651d; /* Light brown */
 }
 
+.add-to-cart-button{
+    background-color: #008CBA;
+}
 .start {
     background-color: #008CBA; /* Blue */
 }
