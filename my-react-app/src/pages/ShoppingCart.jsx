@@ -76,12 +76,12 @@ export default function ShoppingCart() {
             cart.map(item => (
               <div key={item.id} className="cart-item">
                 <img 
-                  src={`/src/assets/${item.image}`} 
+                  src={item.image} 
                   alt={item.name} 
-                  style={{ width: '80px' }}
+                  style={{ width: '80px', height: '80px', objectFit: 'cover' }} 
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = '/src/assets/fallback.jpg';
+                    e.target.src = '/assets/fallback.jpg';
                   }}
                 />
                 <div className="item-details">
