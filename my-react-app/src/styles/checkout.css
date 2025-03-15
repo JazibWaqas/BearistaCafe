@@ -1,0 +1,156 @@
+
+body {
+    font-family: 'Arial', sans-serif, 'Georgia', serif; /* 'Arial' for general text and 'Georgia' as a fallback serif font */
+    background-color: #A37B73; /* Light brown */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #5C4033; /* Dark brown */
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Checkout Page Container ---------- */
+.checkout-container {
+    width: 40%;
+    background: white;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Section Styling ---------- */
+.section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #5C4033; /* Dark brown */
+}
+
+h2, h3 {
+    text-align: center;
+    color: #5C4033; /* Dark brown */
+    font-family: 'Georgia', serif; /* Use serif font for headings */
+}
+
+/* ---------- Form Styling (Name, Contact, Address, Area) ---------- */
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #5C4033; /* Dark brown */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Space between fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9dddb; /* Light pink */
+}
+
+textarea {
+    height: 80px; /* Larger text area for address */
+    resize: none;
+}
+
+/* ---------- Payment Section ---------- */
+.payment-section {
+    background: #f9f9f9; /* Light gray */
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.payment-section label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5C4033; /* Dark brown */
+}
+
+/* ---------- Order Summary Section ---------- */
+.order-summary {
+    border-top: 2px solid #5C4033; /* Dark brown */
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.order-summary p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.order-summary .grand-total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ---------- Order Items List ---------- */
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9; /* Light gray */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.order-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+/* ---------- Place Order Button ---------- */
+.place-order-btn {
+    width: 100%;
+    background: #5C4033; /* Dark brown */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.place-order-btn:hover {
+    background: #3e2a1f; /* Darker brown */
+}
+
+
+/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+@media (max-width: 768px) {
+    /* Make checkout container full width on small screens */
+    .checkout-container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    nav ul li a {
+        font-size: 30px;
+    }
+    /* Stack footer content vertically */
+    .footer-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+    }
+
+    .about-us,
+    .contact-us {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
