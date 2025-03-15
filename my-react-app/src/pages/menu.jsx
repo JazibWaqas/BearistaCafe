@@ -120,12 +120,12 @@ const Menu = () => {
             <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
           </div>
 
-          <div className="box" data-id="7" data-name="Teddy Graham Latte" data-price="480" data-image="images (1).jfif"
-               style={{ display: matchesSearch("Teddy Graham Latte") ? "" : "none" }}>
-            <img src="/assets/images_(1).jfif" alt="Teddy Graham Latte"/>
-            <p>Teddy Graham Latte</p>
-            <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
-          </div>
+          <div className="box" data-id="7" data-name="Teddy Graham Latte" data-price="480" data-image="teddy1.jfif"
+            style={{ display: matchesSearch("Teddy Graham Latte") ? "" : "none" }}>
+          <img src="/assets/teddy1.jfif" alt="Teddy Graham Latte"/>
+          <p>Teddy Graham Latte</p>
+          <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
+        </div>
 
           <div className="box" data-id="8" data-name="Iced Rose Cardamom Latte" data-price="470" data-image="rose_card.png"
                style={{ display: matchesSearch("Iced Rose Cardamom Latte") ? "" : "none" }}>
@@ -236,9 +236,9 @@ const Menu = () => {
             <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
           </div>
 
-          <div className="box" data-id="23" data-name="Classic Cappuccino" data-price="510" data-image="images (2).jfif"
+          <div className="box" data-id="23" data-name="Classic Cappuccino" data-price="510" data-image="classic_cap.jfif"
                style={{ display: matchesSearch("Classic Cappuccino") ? "" : "none" }}>
-            <img src="/assets/images_(2).jfif" alt="Classic Cappuccino"/>
+            <img src="/assets/classic_cap.jfif" alt="Classic Cappuccino"/>
             <p>Classic Cappuccino</p>
             <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
           </div>
@@ -250,7 +250,7 @@ const Menu = () => {
             <button className="add-to-cart" onClick={openModal}>Add to Cart</button>
           </div>
 
-          <div className="box" data-id="25" data-name="Honey Bee Latte" data-price="490" data-image="honey_latte.webp"
+          <div className="box" data-id="25" data-name="Honey Bee Latte" data-price="490" data-image="honey_latte.png"
                style={{ display: matchesSearch("Honey Bee Latte") ? "" : "none" }}>
             <img src="/assets/honey_latte.png" alt="Honey Bee Latte"/>
             <p>Honey Bee Latte</p>
