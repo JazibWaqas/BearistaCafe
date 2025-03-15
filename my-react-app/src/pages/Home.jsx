@@ -19,6 +19,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 import Navigation from "../components/Navigation";  // ✅ Using your provided Navigation component
+import Header from '../components/Header';
 import Footer from "../components/Footer"; 
 import TopStrip from "../components/TopStrip";       // ✅ Using your provided Footer component
 import "../styles/Home.css";
@@ -27,10 +28,11 @@ const Home = () => {
   const navigate = useNavigate()
   return (
     <div>
-      <Navigation />  {/* ✅ Common Navigation Bar */}
+      <Header />
+
       <TopStrip />    {/* ✅ Common Top Strip */}
       <section className="hero">
-        <h1>Welcome to Bearista Cafe</h1>
+        <h1>Freshly Brewed Just For You!</h1>
         <p>Where coffee meets cuddles in a cozy teddy bear themed experience</p>
         <div className="image-placeholder">
         <img src="/assets/teddyhome (1).png" alt="Bearista Cafe" />
