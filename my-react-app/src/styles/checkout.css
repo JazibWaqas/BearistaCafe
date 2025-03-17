@@ -12,8 +12,9 @@ body {
 
 /* ---------- Checkout Page Container ---------- */
 .checkout-container {
-    width: 50%;
-    max-width: 700px; /* Prevent it from being too large */
+    width: 70%;
+    max-width: 900px; /* Prevents container from getting too wide */
+    min-width: 400px; /* Prevents it from being too narrow */
     background: white;
     margin: 50px auto;
     padding: 30px;
@@ -45,7 +46,7 @@ label {
 
 input, select, textarea {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -101,7 +102,7 @@ textarea {
     background: #5C4033;
     color: white;
     border: none;
-    padding: 14px;
+    padding: 16px;
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
@@ -118,18 +119,19 @@ textarea {
 .delivery-options {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .delivery-options button {
     background: #5C4033;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+    flex: 1; /* Makes buttons equal width */
 }
 
 .delivery-options button:hover {
@@ -141,7 +143,7 @@ textarea {
 /* 📌 Tablet View (Below 1024px) */
 @media (max-width: 1024px) {
     .checkout-container {
-        width: 75%;
+        width: 85%;
         padding: 25px;
     }
 
@@ -169,16 +171,17 @@ textarea {
 
     input, select, textarea {
         font-size: 14px;
-        padding: 10px;
+        padding: 12px;
     }
 
     .place-order-btn {
-        padding: 12px;
+        padding: 14px;
         font-size: 16px;
     }
 
     .delivery-options {
         flex-direction: column;
+        gap: 10px;
     }
 
     .delivery-options button {
@@ -210,6 +213,6 @@ textarea {
 
     .place-order-btn {
         font-size: 14px;
-        padding: 10px;
+        padding: 12px;
     }
 }
