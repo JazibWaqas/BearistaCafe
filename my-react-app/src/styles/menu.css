@@ -86,7 +86,7 @@
 
     
 .vertical-menu a {
-  color: black;
+  color: #5C4033;
   font-size: 1.2rem;
   font-weight: bold;
   display: block;
@@ -193,6 +193,12 @@ body {
   padding-left: 10px;
   color: #4a2e2a;  /* Adjust color to match theme */
 } 
+button.add-to-cart {
+  background-color: #5C4033; /* Change background color */
+  color: white; /* Change text color */
+
+}
+
 
 /* Modal container styles */
 /* Modal Container */
