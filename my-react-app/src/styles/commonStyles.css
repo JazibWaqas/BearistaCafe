@@ -19,17 +19,16 @@ body {
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-/* Ensures full-width layout */
+/* Ensures full-width layout for navbar container */
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    flex-wrap: wrap;
 }
 
 /* Bearista Café Title (Left-Aligned) */
@@ -157,54 +156,33 @@ body {
 
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */
 @media (max-width: 768px) {
-    .footer-info {
-        flex-direction: column;
+    /* Navbar on small screens should remain horizontal */
+    .navbar {
+        flex-direction: row;  /* Ensures it stays in a row */
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Ensuring navbar items are horizontally aligned */
+    .navbar-nav {
+        display: flex;
         gap: 15px;
     }
 
-    .footer-links ul {
-        flex-direction: column;
-        align-items: center;
+    .navbar-nav li {
+        list-style: none;
     }
 
-    .about-us, .contact-us {
-        width: 100%;
-        text-align: center;
+    .top-icons {
+        display: flex;
+        gap: 10px;
     }
-
-    li a {
-        font-size: 24px;
-        padding: 8px 10px;
-    }
-
-
-        .navbar {
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-        }
-    
-        .navbar-container {
-            flex-direction: column;
-            align-items: center;
-        }
-    
-        .navbar-brand {
-            padding-left: 0;
-            text-align: center;
-            width: 100%;
-        }
-    
-        .navbar-nav {
-            flex-direction: column;
-            align-items: center;
-            padding-top: 10px;
-        }
-    
-        .top-icons {
-            margin-top: 10px;
-            justify-content: center;
-            width: 100%;
-        }
-    }
-    
+}
