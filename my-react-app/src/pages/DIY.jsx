@@ -25,15 +25,22 @@ export default function DIY() {
     const { name, value, checked } = e.target;
     
     if (type === 'radio') {
-      let price = 0;
-      if (value === "Like it HOT") price = 300;
-      else if (value === "Make it a Frappe") price = 500;
-      else if (value === "On The Rocks") price = 450;
+      let price = 0 , image = '';
+      if (value === "Like it HOT") {
+        price = 300;
+        image = "/assets/like_it_hot.jpeg" ;}
+      else if (value === "Make it a Frappe") {
+        price = 500;
+        image = "/assets/make_it_a_frappe.jpg" ;}
+      else if (value === "On The Rocks") {
+        price = 450;
+        image = "/assets/on_the_rocks.webp" ;}
 
       setOrderDetails(prev => ({
         ...prev,
         [name]: value ,
-        price: Number(price) 
+        price: Number(price),
+        image : image  
       }));
     } else if (type === 'checkbox') {
       setOrderDetails(prev => ({
@@ -51,6 +58,7 @@ export default function DIY() {
     name: `DIY - ${orderDetails.base}`,  
     price: orderDetails.price, 
     quantity : 1 ,
+    image: orderDetails.image,
     details: {...orderDetails}
   };
 

@@ -4,7 +4,7 @@ import Review from './pages/Review';
 import FAQ from './pages/FAQ';
 import Account from './pages/Account';
 import Login from './pages/Login';
-import Menu from './pages/menu'; // ✅ Fixed import: Ensure file name matches
+import Menu from './pages/menu'; 
 import DIY from './pages/DIY';
 import ShoppingCart from './pages/ShoppingCart';
 import Checkout from './pages/Checkout';
@@ -19,7 +19,7 @@ function App() {
         <Route path="/diy" element={<DIY />} />
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/menu" element={<Menu />} /> {/* ✅ Ensure Menu page exists */}
+        <Route path="/menu" element={<Menu />} /> 
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
