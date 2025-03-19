@@ -8,109 +8,87 @@ body {
     font-family: 'Poppins', sans-serif; /* Body text font */
 }
 
-.header-title {
+/* ---------- Navigation Bar (Header & Top Strip Merged) ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5C4033; /* Navbar background */
+    z-index: 1000;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: center;  /* Makes icon vertically aligned with text */
-    gap: 10px;           /* Adds space between icon and text */
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.header-title .fas {
-    color: #5C4033;      /* Makes icon brown to match your theme */
-    font-size: 36px;     /* Controls icon size */
-}
-
-/* Optional: adds a fun effect when hovering over the header */
-.header-title:hover .fas {
-    transform: rotate(10deg);
-    transition: transform 0.3s ease;
-}
-/* ---------- Navigation Bar (Header & Top Strip) ---------- */
-.header-nav-container {
+/* Ensures full-width layout */
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 15px;
     width: 100%;
+    flex-wrap: wrap;
 }
 
-/* Navigation Links */
-ul {
-    list-style-type: none;
+/* Bearista Café Title (Left-Aligned) */
+.navbar-brand {
+    margin-right: auto; /* Pushes nav links to the right */
+    padding-left: 20px;
+}
+
+/* Styling for "Bearista Café" */
+.header-text {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
     margin: 0;
-    padding: 0;
+}
+
+/* Navigation Links (Centered) */
+.navbar-nav {
     display: flex;
-    justify-content: flex-end;
     gap: 15px;
-    background-color: transparent;
 }
 
-li a {
-    display: block;
-    color: #5C4033;
-    text-align: center;
-    padding: 10px 12px;
-    font-size: 30px;
-    text-decoration: none;
+/* Styling for Navbar Links */
+.nav-link {
+    color: white !important;
+    font-size: 20px;
     font-weight: bold;
     font-style: italic;
     font-family: 'Georgia', serif;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Floating Hover Effect */
-li a:hover {
+.nav-link:hover {
     transform: translateY(-3px);
-    color: #8b5e34;
+    color: #d2a9a7 !important;
 }
 
-/* Bootstrap nav links */
-.navbar .custom-nav-link {
-    color: #5C4033 !important;
-    font-size: 30px;
-    font-weight: bold;
-    font-style: italic;
-    font-family: 'Georgia', serif;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.navbar .custom-nav-link:hover {
-    transform: translateY(-3px);
-    color: #8b5e34 !important;
-}
-
-/* Top Strip Styles */
-.top-strip {
-    background-color: transparent;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.top-strip .custom-link,
-.top-strip .cart-link {
-    color: #5C4033;
-    padding: 8px;
+/* ---------- Top Icons (Login & Cart) ---------- */
+.top-icons {
     display: flex;
     align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-family: 'Georgia', serif;
-    font-weight: bold;
-    transition: transform 0.3s ease, color 0.3s ease;
+    gap: 15px;
+    margin-right: 20px;
 }
 
-/* Floating Hover Effect for Top Strip */
-.top-strip .custom-link:hover,
-.top-strip .cart-link:hover {
-    transform: translateY(-3px);
-    color: #8b5e34;
-}
-
-.top-strip .fas {
+/* Fixing Icon Visibility */
+.top-icons .custom-link,
+.top-icons .cart-link {
+    color: white !important; /* Ensures icons are visible */
     font-size: 24px;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
+.top-icons .custom-link:hover,
+.top-icons .cart-link:hover {
+    transform: translateY(-3px);
+    color: #f9dddb !important; /* Lighter color for hover */
+}
 /* ---------- Footer Styles ---------- */
 .footer {
     display: flex;
@@ -201,15 +179,34 @@ li a:hover {
         padding: 8px 10px;
     }
 
-    .navbar .custom-nav-link {
-        font-size: 24px;
-    }
 
-    .top-strip .custom-link {
-        font-size: 16px;
+        .navbar {
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+    
+        .navbar-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .navbar-brand {
+            padding-left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    
+        .navbar-nav {
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+    
+        .top-icons {
+            margin-top: 10px;
+            justify-content: center;
+            width: 100%;
+        }
     }
-
-    .top-strip .fas {
-        font-size: 20px;
-    }
-}
+    
