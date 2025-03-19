@@ -41,17 +41,27 @@
       background-color: #A37B73FF; /* Light brown */
   }
   .search-container {
-    position: absolute; /* Places the search bar separately */
-    top: 100px; /* Adjust as needed */
-    left: 20px; /* Aligns it with the sidebar */
-    width: 200px; /* Make sure it doesn’t stretch with the menu */
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 25%; /* Make it span the full width */
+    padding: 10px 0;
+    background-color: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-top: 60px;
 }
+
 .search-bar {
-  width: 100%; /* Fill the container */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9dddb; /* Light pink */
+    width: 50%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #5C4033;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .content-container {
   display: flex; /* Enables flexbox */

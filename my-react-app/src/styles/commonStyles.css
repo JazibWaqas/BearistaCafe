@@ -68,27 +68,25 @@ body {
     color: #d2a9a7 !important;
 }
 
-/* ---------- Top Icons (Login & Cart) ---------- */
-.top-icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-right: 20px;
-}
-
-/* Fixing Icon Visibility */
-.top-icons .custom-link,
-.top-icons .cart-link {
-    color: white !important; /* Ensures icons are visible */
-    font-size: 24px;
+/* Ensure icons are white */
+.top-icons i {
+    color: white !important; /* Force white icons */
+    font-size: 24px; /* Adjust icon size */
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.top-icons .custom-link:hover,
-.top-icons .cart-link:hover {
-    transform: translateY(-3px);
-    color: #f9dddb !important; /* Lighter color for hover */
+/* Ensure links containing icons are also styled correctly */
+.top-icons .custom-link i,
+.top-icons .cart-link i {
+    color: white !important;
 }
+
+/* Hover effect */
+.top-icons i:hover {
+    transform: translateY(-3px);
+    color: #f9dddb !important; /* Lighter shade of pink */
+}
+
 /* ---------- Footer Styles ---------- */
 .footer {
     display: flex;
