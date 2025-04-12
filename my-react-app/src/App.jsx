@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Home from './pages/Home';
 import Review from './pages/Review';
 import FAQ from './pages/FAQ';
@@ -11,19 +12,21 @@ import Checkout from './pages/Checkout';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/review" element={<Review />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/diy" element={<DIY />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/menu" element={<Menu />} /> 
-        <Route path="/cart" element={<ShoppingCart />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/diy" element={<DIY />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/menu" element={<Menu />} /> 
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

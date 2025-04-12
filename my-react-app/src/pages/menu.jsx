@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCart } from '../context/CartContext';  // Add this line
 import "../styles/commonStyles.css";  
 import "../styles/menu.css";
 import Header from '../components/Header';
@@ -7,7 +8,7 @@ import Footer from '../components/Footer';
 import DrinkModal from "./DrinkModal";
 
 const Menu = () => {
-  const [cart, setCart] = useState([]);
+  const { addToCart } = useCart(); 
   const [selectedDrink, setSelectedDrink] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -33,12 +34,6 @@ const Menu = () => {
     setSelectedDrink(null);
   };
 
-  const addToCart = (cartItem) => {
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    const updatedCart = [...existingCart, cartItem];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCart(updatedCart);
-  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
@@ -299,7 +294,10 @@ const Menu = () => {
         <DrinkModal 
           drink={selectedDrink} 
           onClose={closeModal} 
-          onAddToCart={addToCart} 
+          onAddToCart={(item) => {
+            addToCart(item);
+            closeModal();
+          }} 
         />
       )}
 

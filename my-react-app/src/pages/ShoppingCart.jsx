@@ -1,40 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; // Add this import
 import Header from '../components/Header';
 import TopStrip from '../components/TopStrip';
 import Footer from '../components/Footer';
 
 export default function ShoppingCart() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const { cart, loading, updateQuantity, removeFromCart } = useCart(); // Add this line
   const [deliveryOption, setDeliveryOption] = useState('pickup');
   const [couponCode, setCouponCode] = useState('');
-
-  useEffect(() => {
-    loadCartItems();
-  }, []);
-
-  const loadCartItems = () => {
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCart(savedCart);
-  };
-
-  const updateCart = (newCart) => {
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-  };
-
-  const removeItem = (itemId) => {
-    const newCart = cart.filter(item => item.id !== itemId);
-    updateCart(newCart);
-  };
-
-  const updateQuantity = (itemId, newQuantity) => {
-    const newCart = cart.map(item => 
-      item.id === itemId ? { ...item, quantity: parseInt(newQuantity) } : item
-    );
-    updateCart(newCart);
-  };
 
   const calculateTotals = () => {
     const taxRate = 0.15;
@@ -42,6 +17,25 @@ export default function ShoppingCart() {
     const tax = total * taxRate;
     const grandTotal = total + tax;
     return { total, tax, grandTotal };
+  };
+
+  const handleRemoveItem = async (itemId) => {
+    try {
+      await removeFromCart(itemId);
+    } catch (error) {
+      console.error('Error removing item:', error);
+      alert('Failed to remove item from cart');
+    }
+  };
+
+  const handleUpdateQuantity = async (itemId, newQuantity) => {
+    try {
+      if (newQuantity < 1) return; // Prevent negative quantities
+      await updateQuantity(itemId, parseInt(newQuantity));
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+      alert('Failed to update quantity');
+    }
   };
 
   const applyCoupon = () => {
@@ -62,6 +56,19 @@ export default function ShoppingCart() {
 
   const { total, tax, grandTotal } = calculateTotals();
 
+  if (loading) {
+    return (
+      <div className="cart-page">
+        <Header />
+        <TopStrip />
+        <div className="cart-container">
+          <h2>Loading cart...</h2>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="cart-page">
       <Header />
@@ -74,7 +81,7 @@ export default function ShoppingCart() {
             <p>Your cart is empty.</p>
           ) : (
             cart.map(item => (
-              <div key={item.id} className="cart-item">
+              <div key={item._id || item.id} className="cart-item">
                 <img 
                   src={item.image} 
                   alt={item.name} 
@@ -87,11 +94,31 @@ export default function ShoppingCart() {
                 <div className="item-details">
                   <p className="item-name">{item.name}</p>
                   <p className="item-price">Rs. {item.price}</p>
+                  {item.size && <p className="item-size">Size: {item.size}</p>}
+                  {item.milk && <p className="item-milk">Milk: {item.milk}</p>}
+                  {item.sweetness && <p className="item-sweetness">Sweetness: {item.sweetness}</p>}
+                  {item.isDIY && item.diyDetails && (
+                    <div className="diy-details">
+                      <p>Base: {item.diyDetails.base}</p>
+                      <p>Milk: {item.diyDetails.milk}</p>
+                      {item.diyDetails.syrups?.length > 0 && (
+                        <p>Syrups: {item.diyDetails.syrups.join(', ')}</p>
+                      )}
+                      {item.diyDetails.extras?.length > 0 && (
+                        <p>Extras: {item.diyDetails.extras.join(', ')}</p>
+                      )}
+                    </div>
+                  )}
+                  {item.instructions && (
+                    <p className="item-instructions">
+                      Special Instructions: {item.instructions}
+                    </p>
+                  )}
                 </div>
                 <div className="item-controls">
                   <button 
                     className="delete"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => handleRemoveItem(item._id || item.id)}
                   >
                     <i className="fas fa-trash"></i>
                   </button>
@@ -99,7 +126,7 @@ export default function ShoppingCart() {
                     type="number"
                     value={item.quantity}
                     min="1"
-                    onChange={(e) => updateQuantity(item.id, e.target.value)}
+                    onChange={(e) => handleUpdateQuantity(item._id || item.id, e.target.value)}
                     style={{ width: '50px' }}
                   />
                 </div>
@@ -152,7 +179,7 @@ export default function ShoppingCart() {
         {deliveryOption === 'pickup' && (
           <div className="pickup-info">
             <p>You have to collect your order from:</p>
-            <p><strong>CoffeeCo Defence Phase 6</strong></p>
+            <p><strong>Bearista Café Defence Phase 6</strong></p>
             <p><strong>Location:</strong> 13-C, Main Khayban-e-Bukhari, Defence Phase 6, Karachi</p>
             <p><strong>Phone:</strong> +92 302 3626078</p>
           </div>

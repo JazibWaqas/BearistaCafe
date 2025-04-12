@@ -1,46 +1,44 @@
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import TopStrip from '../components/TopStrip';
 import Footer from '../components/Footer';
+import { useCart } from '../context/CartContext'; // Add this import
 import "../styles/diy.css";
 
-
-
 export default function DIY() {
+  const { addToCart } = useCart(); // Add this line to use cart context
   const [currentStep, setCurrentStep] = useState('start');
   const [orderDetails, setOrderDetails] = useState({
     base: '',
     milk: '',
     syrups: [],
     extras: []
-  })
-  const [cart, setCart] = useState([]);
-
-  
-  
-  ;
+  });
 
   const handleInputChange = (e, type) => {
     const { name, value, checked } = e.target;
     
     if (type === 'radio') {
-      let price = 0 , image = '';
+      let price = 0, image = '';
       if (value === "Like it HOT") {
         price = 300;
-        image = "/assets/like_it_hot.jpeg" ;}
+        image = "/assets/like_it_hot.jpeg";
+      }
       else if (value === "Make it a Frappe") {
         price = 500;
-        image = "/assets/make_it_a_frappe.jpg" ;}
+        image = "/assets/make_it_a_frappe.jpg";
+      }
       else if (value === "On The Rocks") {
         price = 450;
-        image = "/assets/on_the_rocks.webp" ;}
+        image = "/assets/on_the_rocks.webp";
+      }
 
       setOrderDetails(prev => ({
         ...prev,
-        [name]: value ,
+        [name]: value,
         price: Number(price),
-        image : image  
+        image: image
       }));
     } else if (type === 'checkbox') {
       setOrderDetails(prev => ({
@@ -52,23 +50,38 @@ export default function DIY() {
     }
   };
 
+  // Update the addToCart function to use the cart context
+  const handleAddToCart = async () => {
+    // Create a unique ID for the DIY drink
+    const diyId = `diy-${Date.now()}`;
+    
+    const newDrink = {
+      id: diyId,
+      name: `DIY - ${orderDetails.base}`,
+      price: orderDetails.price,
+      quantity: 1,
+      image: orderDetails.image,
+      isDIY: true,
+      diyDetails: {
+        base: orderDetails.base,
+        milk: orderDetails.milk,
+        syrups: orderDetails.syrups,
+        extras: orderDetails.extras
+      }
+    };
 
-  const addToCart = () => {
-  const newDrink = {
-    name: `DIY - ${orderDetails.base}`,  
-    price: orderDetails.price, 
-    quantity : 1 ,
-    image: orderDetails.image,
-    details: {...orderDetails}
+    await addToCart(newDrink);
+    alert(`Your custom drink '${newDrink.name}' for Rs. ${newDrink.price} has been added to your cart!`);
+    
+    // Reset the form
+    setOrderDetails({
+      base: '',
+      milk: '',
+      syrups: [],
+      extras: []
+    });
+    setCurrentStep('start');
   };
-
-    const updatedCart = [...cart, newDrink];
-    setCart(updatedCart);
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    alert(`Your custom drink '${newDrink.name}' for Rs. ${newDrink.price}' has been added to your cart!`);
-  };
-
 
   return (
     <div className="diy-page">
@@ -123,7 +136,13 @@ export default function DIY() {
             </label>
             <div className="navigation">
               <button className="back" onClick={() => setCurrentStep('start')}>← Back</button>
-              <button className="next" onClick={() => setCurrentStep('step2')}>Next ➝</button>
+              <button 
+                className="next" 
+                onClick={() => setCurrentStep('step2')}
+                disabled={!orderDetails.base} // Disable if no base selected
+              >
+                Next ➝
+              </button>
             </div>
           </div>
         )}
@@ -164,7 +183,13 @@ export default function DIY() {
             </label>
             <div className="navigation">
               <button className="back" onClick={() => setCurrentStep('step1')}>← Back</button>
-              <button className="next" onClick={() => setCurrentStep('step3')}>Next ➝</button>
+              <button 
+                className="next" 
+                onClick={() => setCurrentStep('step3')}
+                disabled={!orderDetails.milk} // Disable if no milk selected
+              >
+                Next ➝
+              </button>
             </div>
           </div>
         )}
@@ -217,8 +242,18 @@ export default function DIY() {
         {currentStep === 'summary' && (
           <div className="step">
             <h2>Order Summary</h2>
-            <p>Thank you for customizing your coffee! Click to add your DIY coffe to your cart !!</p>
-            <button className = "add-to-cart-button" onClick={addToCart}>Add to Cart</button>
+            <div className="summary-details">
+              <p><strong>Base:</strong> {orderDetails.base}</p>
+              <p><strong>Milk:</strong> {orderDetails.milk}</p>
+              {orderDetails.syrups.length > 0 && (
+                <p><strong>Syrups:</strong> {orderDetails.syrups.join(', ')}</p>
+              )}
+              {orderDetails.extras.length > 0 && (
+                <p><strong>Extras:</strong> {orderDetails.extras.join(', ')}</p>
+              )}
+              <p><strong>Price:</strong> Rs. {orderDetails.price}</p>
+            </div>
+            <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
             <Link to="/cart" className="back">View Cart</Link>
           </div>
         )}

@@ -1,119 +1,210 @@
-
-body {
-    font-family: 'Arial', sans-serif, 'Georgia', serif; /* 'Arial' for body text, 'Georgia' as fallback serif */
-    background-color: #A37B73FF; /* Light brown */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #5C4033; /* Dark brown */
-    margin: 0;
-    padding: 0;
-}
-
-
-/* ---------- Account Page Container ---------- */
-.account-container {
-    width: 50%;
+.account-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #A37B73FF;
+  }
+  
+  .account-container {
+    flex: 1;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 20px;
+  }
+  
+  .account-container h2 {
+    text-align: center;
+    color: white;
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  
+  .account-section {
     background: white;
-    margin: 50px auto;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* ---------- Section Styling ---------- */
-.section {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #5C4033; /* Dark brown */
-}
-
-h2, h3 {
-    text-align: center;
-    color: #5C4033; /* Dark brown */
-    font-family: 'Georgia', serif; /* Apply 'Georgia' to headings */
-}
-
-/* ---------- Form Styling (Name, Contact, Address, Area) ---------- */
-label {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .account-section h3 {
+    color: #5C4033;
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f9dddb;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
     display: block;
-    font-size: 16px;
     font-weight: bold;
     margin-bottom: 8px;
-    color: #5C4033; /* Dark brown */
-}
-
-input, select, textarea {
+    color: #5C4033;
+    font-size: 16px;
+  }
+  
+  .input-field {
     width: 100%;
-    padding: 14px;
-    margin-bottom: 20px; /* Space between fields */
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #f9dddb; /* Light pink */
-}
-
-/* Styling for input focus */
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border: 2px solid #5C4033; /* Dark brown */
-    box-shadow: 0 0 5px rgba(92, 64, 51, 0.5); /* Light glow */
-}
-
-textarea {
-    height: 100px; /* Larger text area for address */
-    resize: vertical;
-}
-
-/* ---------- Voucher Progress Circles ---------- */
-.voucher-progress {
+    background-color: #f9dddb;
+    color: #5C4033;
+    box-sizing: border-box;
+  }
+  
+  .input-field.readonly {
+    background-color: #f9dddb;
+    cursor: not-allowed;
+  }
+  
+  .button-group {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .button-group button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-button, .save-button {
+    background-color: #f9dddb;
+    color: #5C4033;
+    min-width: 150px;
+  }
+  
+  .cancel-button {
+    background-color: #5C4033;
+    color: white;
+    min-width: 150px;
+  }
+  
+  .button-group button:hover {
+    background-color: #5C4033;
+    color: white;
+  }
+  
+  /* Voucher Section Styles */
+  .voucher-section {
+    text-align: center;
+  }
+  
+  .coffee-progress {
+    margin: 20px 0;
+  }
+  
+  .coffee-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  
+  .coffee-icon {
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .coffee-icon.empty {
+    opacity: 0.3;
+  }
+  
+  .coffee-icon.filled {
+    opacity: 1;
+  }
+  
+  .progress-text {
+    color: #5C4033;
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: bold;
+  }
+  
+  .remaining-text {
+    color: #5C4033;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .vouchers-list {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f9dddb;
+  }
+  
+  .vouchers-list h4 {
+    color: #5C4033;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .voucher-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #f9dddb; /* Light pink */
-    border: 2px solid #5C4033; /* Dark brown */
-    display: inline-block;
-}
-
-.circle.completed {
-    background-color: #5C4033; /* Dark brown */
-}
-
-
-
-/* ---------- Responsive Styles (Mobile < 768px) ---------- */
-@media (max-width: 768px) {
-    /* Make account container full width on small screens */
+    align-items: center;
+    background: #f9dddb;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  
+  .voucher-code {
+    font-family: monospace;
+    font-size: 18px;
+    color: #5C4033;
+    font-weight: bold;
+  }
+  
+  .copy-button {
+    background: #5C4033;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .copy-button:hover {
+    background-color: #4a3328;
+  }
+  
+  @media (max-width: 768px) {
     .account-container {
-        width: 90%;
-        padding: 20px;
+      padding: 15px;
+      margin: 1rem auto;
     }
-    
-    /* Adjust font size for header navigation */
-    nav ul li a {
-        font-size: 30px;
+  
+    .account-section {
+      padding: 20px;
     }
-
-    /* Stack footer content vertically */
-    .footer-info {
-        flex-direction: column;
-        gap: 20px;
+  
+    .button-group button {
+      width: 100%;
+      margin: 5px 0;
     }
-
-    .footer-links ul {
-        flex-direction: column;
+  
+    .voucher-item {
+      flex-direction: column;
+      gap: 10px;
     }
-
-    .about-us,
-    .contact-us {
-        flex: none;
-        width: 100%;
-        margin-bottom: 20px;
+  
+    .copy-button {
+      width: 100%;
     }
-}
+  }
