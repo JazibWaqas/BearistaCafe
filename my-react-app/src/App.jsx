@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Review from './pages/Review';
 import FAQ from './pages/FAQ';
 import Account from './pages/Account';
+import Register from './pages/Register';
 import Login from './pages/Login';
 import Menu from './pages/menu'; 
 import DIY from './pages/DIY';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/diy" element={<DIY />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/menu" element={<Menu />} /> 
           <Route path="/cart" element={<ShoppingCart />} />

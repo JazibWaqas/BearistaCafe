@@ -13,15 +13,8 @@ export default function Login() {
     password: ''
   });
 
-  const [registerData, setRegisterData] = useState({
-    fullname: '',
-    email: '',
-    phone: '',
-    password: ''
-  });
 
   const [loginError, setLoginError] = useState('');
-  const [registerError, setRegisterError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoginSubmit = async (e) => {
@@ -46,48 +39,9 @@ export default function Login() {
     }
   };
 
-  const handleRegisterSubmit = async (e) => {
-    e.preventDefault();
-    setRegisterError('');
-    setIsLoading(true);
-
-    if (registerData.password.length < 6) {
-      setRegisterError('Password must be at least 6 characters long');
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      await axios.post('http://localhost:5000/api/auth/register', registerData);
-      
-      setRegisterData({
-        fullname: '',
-        email: '',
-        phone: '',
-        password: ''
-      });
-      
-      // Show success message and clear form instead of navigating
-      alert('Registration successful! Please login to continue.');
-      
-    } catch (error) {
-      setRegisterError(error.response?.data?.msg || 'Registration failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLoginData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleRegisterChange = (e) => {
-    const { name, value } = e.target;
-    setRegisterData(prev => ({
       ...prev,
       [name]: value
     }));
@@ -132,67 +86,6 @@ export default function Login() {
               disabled={isLoading}
             >
               {isLoading ? 'Logging in...' : 'Login'}
-            </button>
-          </form>
-        </div>
-
-        {/* Register Form */}
-        <div className="form-register">
-          <h2>Register</h2>
-          <form onSubmit={handleRegisterSubmit}>
-            {registerError && <div className="error-message">{registerError}</div>}
-            
-            <label htmlFor="register-fullname">Full Name:</label>
-            <input
-              type="text"
-              id="register-fullname"
-              name="fullname"
-              value={registerData.fullname}
-              onChange={handleRegisterChange}
-              required
-              disabled={isLoading}
-            />
-
-            <label htmlFor="register-email">Email Address:</label>
-            <input
-              type="email"
-              id="register-email"
-              name="email"
-              value={registerData.email}
-              onChange={handleRegisterChange}
-              required
-              disabled={isLoading}
-            />
-
-            <label htmlFor="register-phone">Phone Number:</label>
-            <input
-              type="tel"
-              id="register-phone"
-              name="phone"
-              value={registerData.phone}
-              onChange={handleRegisterChange}
-              required
-              disabled={isLoading}
-            />
-
-            <label htmlFor="register-password">Password:</label>
-            <input
-              type="password"
-              id="register-password"
-              name="password"
-              value={registerData.password}
-              onChange={handleRegisterChange}
-              required
-              disabled={isLoading}
-              minLength="6"
-            />
-
-            <button 
-              type="submit" 
-              className="submit-btn"
-              disabled={isLoading}
-            >
-              {isLoading ? 'Registering...' : 'Register'}
             </button>
           </form>
         </div>
