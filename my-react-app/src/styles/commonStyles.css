@@ -4,15 +4,13 @@
 body {
     background-color: #A37B73FF;
     margin: 0;
-    padding: 0;
     font-family: 'Poppins', sans-serif; /* Body text font */
 }
 
 /* ---------- Navigation Bar (Header & Top Strip Merged) ---------- */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
+
     width: 100%;
     background-color: #5C4033; /* Navbar background */
     z-index: 1000;
@@ -60,6 +58,7 @@ body {
     font-style: italic;
     font-family: 'Georgia', serif;
     transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
 .nav-link:hover {
@@ -156,33 +155,50 @@ body {
 
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */
 @media (max-width: 768px) {
-    /* Navbar on small screens should remain horizontal */
     .navbar {
-        flex-direction: row;  /* Ensures it stays in a row */
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px;
+        padding: 8px 10px;
     }
 
     .navbar-container {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         width: 100%;
     }
 
-    /* Ensuring navbar items are horizontally aligned */
+    /* Title */
+    .navbar-brand {
+        flex: 0 0 auto;
+        order: 1; /* Set order to control positioning */
+    }
+
+    .header-text {
+        font-size: 18px;
+    }
+
+    /* Center navigation */
     .navbar-nav {
         display: flex;
-        gap: 15px;
+        flex-direction: row;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex: 0 1 auto;
+        order: 2; /* Set order to control positioning */
     }
 
-    .navbar-nav li {
-        list-style: none;
+    .nav-link {
+        font-size: 16px;
+        white-space: nowrap;
     }
 
+    /* Icons - move to right */
     .top-icons {
         display: flex;
         gap: 10px;
+        flex: 0 0 auto;
+        order: 3; /* Set order to control positioning */
+        margin-left: auto; /* Push to the right */
     }
 }

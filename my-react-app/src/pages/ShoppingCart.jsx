@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext'; // Add this import
-import Header from '../components/Header';
-import TopStrip from '../components/TopStrip';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 export default function ShoppingCart() {
@@ -59,8 +58,7 @@ export default function ShoppingCart() {
   if (loading) {
     return (
       <div className="cart-page">
-        <Header />
-        <TopStrip />
+        <Navigation />
         <div className="cart-container">
           <h2>Loading cart...</h2>
         </div>
@@ -71,8 +69,7 @@ export default function ShoppingCart() {
 
   return (
     <div className="cart-page">
-      <Header />
-      <TopStrip />
+      <Navigation />
       <div className="cart-container">
         <h2>Your Cart</h2>
         

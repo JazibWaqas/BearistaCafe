@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 export default function FAQ() {
@@ -55,7 +55,7 @@ export default function FAQ() {
 
   return (
     <div className="faq-page">
-      <Header />
+      <Navigation />
       
       <h2>Frequently Asked Questions</h2>
 

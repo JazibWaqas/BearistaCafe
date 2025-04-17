@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import axios from 'axios';
-import Header from '../components/Header';
-import TopStrip from '../components/TopStrip';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer';  
+import Navigation from '../components/Navigation';
 import OrderConfirmationModal from '../components/OrderConfirmationModal';
 import '../styles/checkout.css';
 
@@ -73,6 +72,11 @@ const Checkout = () => {
       return;
     }
 
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
     try {
       const { total, tax, grandTotal } = calculateTotals();
       const token = localStorage.getItem('token');
@@ -83,8 +87,18 @@ const Checkout = () => {
         return;
       }
 
-      const response = await axios.post('/api/orders', {
-        items: cart,
+      // Prepare order data
+      const orderData = {
+        items: cart.map(item => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          size: item.size || 'N/A',
+          milk: item.milk || 'None',
+          sweetness: item.sweetness || 'None',
+          instructions: item.instructions || '',
+          image: item.image || ''
+        })),
         deliveryDetails: {
           customerName,
           contactInfo,
@@ -95,12 +109,18 @@ const Checkout = () => {
         tax,
         grandTotal,
         paymentMethod: 'Cash on Delivery'
-      }, {
+      };
+
+      console.log('Sending order data:', orderData);  // Debug log
+
+      const response = await axios.post('/api/orders', orderData, {
         headers: { 
           'x-auth-token': token,
           'Content-Type': 'application/json'
         }
       });
+
+      console.log('Order response:', response.data);  // Debug log
 
       // Set the confirmed order and show modal
       setConfirmedOrder(response.data);
@@ -109,8 +129,8 @@ const Checkout = () => {
       // Clear the cart
       clearCart();
     } catch (error) {
-      console.error('Error placing order:', error);
-      alert('Failed to place order. Please try again.');
+      console.error('Order error:', error.response?.data || error.message);  // Detailed error log
+      alert(error.response?.data?.message || 'Failed to place order. Please try again.');
     }
   };
 
@@ -118,9 +138,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page">
-      <Header />
-      <TopStrip />
-
+      <Navigation />
       <div className="checkout-container">
         <h2>Checkout</h2>
 
@@ -141,7 +159,7 @@ const Checkout = () => {
             <input
               type="text"
               id="contactInfo"
-              placeholder="Phone number and email"
+              placeholder="Phone number"
               value={formData.contactInfo}
               onChange={handleInputChange}
               required

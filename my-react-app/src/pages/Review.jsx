@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 export default function Review() {
@@ -28,7 +28,7 @@ export default function Review() {
 
   return (
     <div className="review-page">
-      <Header />
+      <Navigation />
       <h2>Customer Feedback Form</h2>
       <form onSubmit={handleSubmit}>
         <label>Order Number:</label>

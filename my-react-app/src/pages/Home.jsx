@@ -1,18 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 import Navigation from "../components/Navigation";  
-import Header from '../components/Header';
 import Footer from "../components/Footer"; 
-import TopStrip from "../components/TopStrip";       
 import "../styles/Home.css";
 
 const Home = () => {
   const navigate = useNavigate()
   return (
     <div>
-      <Header />
-
-      <TopStrip />  
+      <Navigation />
       <section className="hero">
         <h1>Freshly Brewed Just For You!</h1>
         <p>Where coffee meets cuddles in a cozy teddy bear themed experience</p>

@@ -5,23 +5,23 @@ export default function Navigation() {
     <nav className="navbar navbar-expand-md">
       <div className="container-fluid navbar-container">
         {/* Left-Aligned Name */}
-        <div className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <h1 className="header-text">Bearista Café</h1>
-        </div>
+        </Link>
 
         {/* Navigation Links (Centered) */}
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <a className="nav-link custom-nav-link" href="/">Home</a>
+            <Link className="nav-link custom-nav-link" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link custom-nav-link" href="/menu">Menu</a>
+            <Link className="nav-link custom-nav-link" to="/menu">Menu</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link custom-nav-link" href="/diy">DIY</a>
+            <Link className="nav-link custom-nav-link" to="/diy">DIY</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link custom-nav-link" href="/account">Account</a>
+            <Link className="nav-link custom-nav-link" to="/account">Account</Link>
           </li>
         </ul>
 

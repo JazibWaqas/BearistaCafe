@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import '../styles/register.css';
 export default function Register() {
@@ -57,7 +57,7 @@ export default function Register() {
   };
   return (
     <div className="register-page">
-      <Header/>
+      <Navigation/>
       <div className="form-container">
              <div className="form-register">
                 <h2>Register</h2>
