@@ -40,7 +40,8 @@ export default function Register() {
       
       // Show success message and clear form instead of navigating
       alert('Registration successful! Please login to continue.');
-      
+      navigate('/login');
+
     } catch (error) {
       setRegisterError(error.response?.data?.msg || 'Registration failed. Please try again.');
     } finally {
