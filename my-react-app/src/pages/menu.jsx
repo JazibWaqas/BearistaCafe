@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useCart } from '../context/CartContext';  // Add this line
 import "../styles/commonStyles.css";  
 import "../styles/menu.css";
-import Header from '../components/Header';
-import TopStrip from '../components/TopStrip';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import DrinkModal from "./DrinkModal";
 
@@ -46,8 +45,7 @@ const Menu = () => {
 
   return (
     <div className="menu-page">
-      <Header />
-      <TopStrip />
+      <Navigation />
 
       <div className="search-container">
         <input 

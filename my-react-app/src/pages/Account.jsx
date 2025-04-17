@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import '../styles/account.css';
@@ -87,7 +87,7 @@ export default function Account() {
   if (loading) {
     return (
       <div className="account-page">
-        <Header />
+        <Navigation />
         <div className="account-container">
           <h2>Loading...</h2>
         </div>
@@ -98,7 +98,7 @@ export default function Account() {
 
   return (
     <div className="account-page">
-      <Header />
+      <Navigation />
       <div className="account-container">
         <h2>Your Account</h2>
         

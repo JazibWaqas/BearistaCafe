@@ -1,7 +1,5 @@
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -70,9 +68,7 @@ export default function Review() {
 
   return (
     <div className="review-page">
-      {/* <Header /> */}
       <Navigation />
-
       <h2>Customer Feedback Form</h2>
       {msg && <p style={{ color: 'crimson', fontWeight: 'bold' }}>{msg}</p>}
       

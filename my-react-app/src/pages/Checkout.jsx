@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import TopStrip from '../components/TopStrip';
-import Footer from '../components/Footer';
+import { useCart } from '../context/CartContext';
+import axios from 'axios';
+import Footer from '../components/Footer';  
+import Navigation from '../components/Navigation';
+import OrderConfirmationModal from '../components/OrderConfirmationModal';
 import '../styles/checkout.css';
+
+// Set the base URL for all axios requests
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const { cart, clearCart } = useCart();
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [confirmedOrder, setConfirmedOrder] = useState(null);
   const [formData, setFormData] = useState({
     customerName: '',
     contactInfo: '',
@@ -16,13 +23,30 @@ const Checkout = () => {
   });
 
   useEffect(() => {
-    loadOrderSummary();
-  }, []);
+    // Try to fetch user details when component mounts
+    const fetchUserDetails = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) return;
 
-  const loadOrderSummary = () => {
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCart(savedCart);
-  };
+        const response = await axios.get('/api/auth/me', {
+          headers: { 'x-auth-token': token }
+        });
+
+        // Pre-fill form with user details
+        setFormData({
+          customerName: response.data.fullname || '',
+          contactInfo: response.data.phone || '',
+          area: response.data.location || '',
+          detailedAddress: response.data.location || ''
+        });
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
 
   const calculateTotals = () => {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -40,7 +64,7 @@ const Checkout = () => {
     }));
   };
 
-  const placeOrder = () => {
+  const placeOrder = async () => {
     const { customerName, contactInfo, area, detailedAddress } = formData;
 
     if (!customerName || !contactInfo || !area || !detailedAddress) {
@@ -48,18 +72,73 @@ const Checkout = () => {
       return;
     }
 
-    alert(`Order placed successfully!\nName: ${customerName}\nContact: ${contactInfo}\nArea: ${area}\nAddress: ${detailedAddress}\nPayment: Cash on Delivery`);
-    localStorage.removeItem('cart');
-    navigate('/menu');
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
+    try {
+      const { total, tax, grandTotal } = calculateTotals();
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        alert('Please log in to place an order.');
+        navigate('/login');
+        return;
+      }
+
+      // Prepare order data
+      const orderData = {
+        items: cart.map(item => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          size: item.size || 'N/A',
+          milk: item.milk || 'None',
+          sweetness: item.sweetness || 'None',
+          instructions: item.instructions || '',
+          image: item.image || ''
+        })),
+        deliveryDetails: {
+          customerName,
+          contactInfo,
+          area,
+          detailedAddress
+        },
+        totalAmount: total,
+        tax,
+        grandTotal,
+        paymentMethod: 'Cash on Delivery'
+      };
+
+      console.log('Sending order data:', orderData);  // Debug log
+
+      const response = await axios.post('/api/orders', orderData, {
+        headers: { 
+          'x-auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Order response:', response.data);  // Debug log
+
+      // Set the confirmed order and show modal
+      setConfirmedOrder(response.data);
+      setShowConfirmation(true);
+      
+      // Clear the cart
+      clearCart();
+    } catch (error) {
+      console.error('Order error:', error.response?.data || error.message);  // Detailed error log
+      alert(error.response?.data?.message || 'Failed to place order. Please try again.');
+    }
   };
 
   const { total, tax, grandTotal } = calculateTotals();
 
   return (
     <div className="checkout-page">
-      <Header />
-      <TopStrip />
-
+      <Navigation />
       <div className="checkout-container">
         <h2>Checkout</h2>
 
@@ -80,7 +159,7 @@ const Checkout = () => {
             <input
               type="text"
               id="contactInfo"
-              placeholder="Phone number and email"
+              placeholder="Phone number"
               value={formData.contactInfo}
               onChange={handleInputChange}
               required
@@ -162,6 +241,16 @@ const Checkout = () => {
           Place Order
         </button>
       </div>
+
+      {showConfirmation && confirmedOrder && (
+        <OrderConfirmationModal
+          order={confirmedOrder}
+          onClose={() => {
+            setShowConfirmation(false);
+            navigate('/menu');
+          }}
+        />
+      )}
 
       <Footer />
     </div>
