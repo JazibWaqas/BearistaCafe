@@ -38,7 +38,9 @@ router.post('/register', async (req, res) => {
     // Create JWT payload
     const payload = {
       user: {
-        id: user.id
+        id: user.id,
+        email: user.email,
+        fullname: user.fullname
       }
     };
 
@@ -84,7 +86,9 @@ router.post('/login', async (req, res) => {
     // Create JWT payload
     const payload = {
       user: {
-        id: user.id
+        id: user.id,
+        email: user.email,
+        fullname: user.fullname
       }
     };
 

@@ -1,16 +1,33 @@
 import { useState } from 'react';
-import Header from '../components/Header';
+// import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import axios from 'axios'; 
+
+
 
 export default function FAQ() {
   const [question, setQuestion] = useState('');
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Question submitted:', question);
-    // Add your form submission logic here
-    setQuestion(''); // Clear the form after submission
+
+    if (!question.trim()) return;
+
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.post('/api/faq', { question }, {
+        headers: token ? { 'x-auth-token': token } : {}
+      });
+
+      alert(res.data.msg);  // or setMsg() to show inline
+      setQuestion('');
+    } catch (err) {
+      alert(err.response?.data?.msg || 'Submission failed');
+    }
   };
+
 
   const faqData = [
     {
@@ -55,7 +72,9 @@ export default function FAQ() {
 
   return (
     <div className="faq-page">
-      <Header />
+      {/* <Header /> */}
+      <Navigation />
+
       
       <h2>Frequently Asked Questions</h2>
 
