@@ -7,6 +7,8 @@ const User = require('../models/User');
 // Create new order
 router.post('/', auth, async (req, res) => {
     try {
+        // console.log('REQ.USER:', req.user);
+
         const {
             items,
             deliveryDetails,
@@ -18,6 +20,8 @@ router.post('/', auth, async (req, res) => {
 
         const newOrder = new Order({
             userId: req.user.id,
+            name: req.user.fullname,
+            email: req.user.email,
             items,
             deliveryDetails,
             totalAmount,
