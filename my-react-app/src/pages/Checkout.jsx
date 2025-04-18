@@ -7,7 +7,6 @@ import Navigation from '../components/Navigation';
 import OrderConfirmationModal from '../components/OrderConfirmationModal';
 import '../styles/checkout.css';
 
-// Set the base URL for all axios requests
 axios.defaults.baseURL = 'http://localhost:5000';
 
 const Checkout = () => {
