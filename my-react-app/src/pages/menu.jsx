@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCart } from '../context/CartContext';  // Add this line
+import { useCart } from '../context/CartContext';  
 import "../styles/commonStyles.css";  
 import "../styles/menu.css";
 import Navigation from '../components/Navigation';
@@ -50,7 +50,7 @@ const Menu = () => {
       <div className="search-container">
         <input 
           type="text" 
-          placeholder="Search items..." 
+          placeholder="Search..." 
           className="search-bar"
           value={searchTerm}
           onChange={handleSearch}

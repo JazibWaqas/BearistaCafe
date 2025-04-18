@@ -1,90 +1,84 @@
+/* Icon Styles */
 .fas, .far, .fa, .href {
-  color: #5C4033; /* Dark brown */
+  color: #5C4033;
   font-size: 24px;
   margin-right: 10px;
   vertical-align: middle;
   float: right;
 }
 
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: #f9dddb;
+}
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      background-color: #f9dddb;
-    }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9dddb;
+  min-width: 160px;
+  z-index: 1;
+}
 
-    
-    /* Style the dropdown menu items */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9dddb;
-      min-width: 160px;
-      z-index: 1;
-    }
-    div.top-strip {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: none;
-    height: 50px;
-    position:cover ;
-    size: cover;
-    
-    }
+/* Top Strip */
+div.top-strip {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: none;
+  height: 50px;
+  position: cover;
+  size: cover;
+}
 
-    body, html {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-      background-color: #A37B73FF; /* Light brown */
-  }
-  .search-container {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 25%; /* Make it span the full width */
-    padding: 10px 0;
-    background-color: none;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    margin-top: 60px;
+/* Search Components */
+.search-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 25%;
+  padding: 10px 0;
+  background-color: none;
+  margin-top: 10px;
 }
 
 .search-bar {
-    width: 50%;
-    max-width: 400px;
-    padding: 10px;
-    border: 2px solid #5C4033;
-    border-radius: 5px;
-    background-color: white;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  max-width: 400px;
+  padding: 10px;
+  border: 2px solid #5C4033;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.content-container {
-  display: flex; /* Enables flexbox */
-  padding: 20px;
-  gap: 20px; /* Space between menu and gallery */
-}
-.vertical-menu {
 
+/* Main Content Layout */
+.content-container {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  margin-top: 90px;
+  position: relative;
+}
+
+/* Vertical Menu */
+.vertical-menu {
   position: sticky;
   top: 0;
   left: 0;
-  overflow-y: auto; 
+  overflow-y: auto;
   width: 250px;
   height: 70vh;
   scrollbar-color: pink;
-  padding: 20px; /* Adds some padding around the menu container */
-  border-radius: 15px; /* Rounded corners for the entire menu */
+  padding: 20px;
+  border-radius: 15px;
   background-color: #f9dddb;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-    
 .vertical-menu a {
   color: #5C4033;
   font-size: 1.2rem;
@@ -96,71 +90,64 @@
   border-radius: 8px;
   text-align: center;
 }
-    
-    .vertical-menu a:hover {
-      background-color: #ccc;
-    }
-    
-    .vertical-menu a.active {
-      background-color: #04AA6D;
-      color: white;
-    }
 
-    .gallery {
-      flex-grow: 1; /* Allows the gallery to take up remaining space */
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-  }
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #A37B73FF;
-    padding-bottom: 50px;
+.vertical-menu a:hover {
+  background-color: #ccc;
 }
 
-  
-  h1 {
-    color: #5C4033;
-    font-weight: bold;
-    text-align: center;
-  }
-  .container {
-    flex-grow: 1; /* Allows the container to take up remaining space */
-    display: flex; /* Enables flexbox in the content area */
-    flex-direction: column; /* Stacks content vertically */
-    align-items: right; /* Centers items horizontally */
-    max-width: 800px; /* Maximum width of the content area */
-    background-color: transparent; 
-  }
-   h2 {
-    width: 100%;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 40px 0 20px 0;
-    padding: 10px;
-    background-color: #f8d7da; 
-    color: #5a2d0c; 
-    border-radius: 10px;
-  }
-  
-  /* Vertical Navigation Menu */
-  
-  /* Gallery Section */
- /* Fix gallery to align items in a single row */
- .gallery {
+.vertical-menu a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Gallery Layout */
+.gallery {
+  flex-grow: 1;
   display: flex;
-  flex-direction: row; /* Organize items in a column */
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  width: 100%; /* Takes full available width */
+  width: 100%;
 }
 
+/* Basic Page Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #A37B73FF;
+  padding-bottom: 50px;
+}
+
+h1 {
+  color: #5C4033;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  max-width: 800px;
+  background-color: transparent;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 40px 0 20px 0;
+  padding: 10px;
+  background-color: #f8d7da;
+  color: #5a2d0c;
+  border-radius: 10px;
+}
+
+/* Product Box Styles */
 .box {
-  flex: 0 0 calc(33.33% - 20px); /* Prevents flex shrinking and maintains width */
+  flex: 0 0 calc(33.33% - 20px);
   background-color: #f9dddb;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -169,39 +156,40 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-  
 .box img {
   width: 40%;
   height: 50%;
   border-radius: 5px;
 }
-  
-  .box p {
-    margin-top: 10px;
-    font-size: 1.1em;
-    color: #333;
-  }
-  .box:hover {
-    transform: scale(1.1); /* Pop-out effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More shadow for depth */
+
+.box p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #333;
 }
+
+.box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Category Styles */
 .Lattes {
-  font-size: 22px;  /* Adjust size */
+  font-size: 22px;
   font-weight: bold;
-  text-align: left;  /* Aligns heading to the left */
-  margin: 20px 0 10px 20px;  /* Adds spacing */
+  text-align: left;
+  margin: 20px 0 10px 20px;
   padding-left: 10px;
-  color: #4a2e2a;  /* Adjust color to match theme */
-} 
-button.add-to-cart {
-  background-color: #5C4033; /* Change background color */
-  color: white; /* Change text color */
-
+  color: #4a2e2a;
 }
 
+/* Button Styles */
+button.add-to-cart {
+  background-color: #5C4033;
+  color: white;
+}
 
-/* Modal container styles */
-/* Modal Container */
+/* Modal Styles */
 .modal-container {
   position: fixed;
   top: 50%;
@@ -220,7 +208,6 @@ button.add-to-cart {
   overflow: hidden;
 }
 
-/* Header */
 .modal-header {
   text-align: center;
   font-size: 24px;
@@ -228,18 +215,16 @@ button.add-to-cart {
   padding-bottom: 10px;
 }
 
-/* Body: Splitting Image & Selections */
 .modal-body {
   display: flex;
-  flex-direction: row; /* Image on left, selections on right */
+  flex-direction: row;
   gap: 30px;
   height: 100%;
   overflow: hidden;
 }
 
-/* Image Container (Left Side) */
 .modal-image-container {
-  flex: 1; /* Image takes 1/3 width */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -249,7 +234,6 @@ button.add-to-cart {
   border-radius: 2px;
 }
 
-/* Image */
 .modal-image {
   width: 100%;
   max-width: 350px;
@@ -258,7 +242,6 @@ button.add-to-cart {
   border-radius: 10px;
 }
 
-/* Right Side Content (Selections) */
 .modal-content {
   flex: 2;
   display: flex;
@@ -271,7 +254,7 @@ button.add-to-cart {
   text-align: left;
 }
 
-/* Scrollbar */
+/* Modal Scrollbar */
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -285,7 +268,7 @@ button.add-to-cart {
   background: #f1f1f1;
 }
 
-/* Option Sections */
+/* Modal Options */
 .size-options,
 .milk-options,
 .sweetness-options {
@@ -296,7 +279,6 @@ button.add-to-cart {
   align-items: flex-start;
 }
 
-/* Labels */
 .size-options label,
 .milk-options label,
 .sweetness-options label {
@@ -307,25 +289,24 @@ button.add-to-cart {
   gap: 8px;
 }
 
-/* Close Button */
+/* Modal Special Instructions */
 .special-instructions {
-  width: 100%; /* Makes it take the full width of its container */
-  height: 400px; /* Adjust height for better usability */
+  width: 100%;
+  height: 400px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  resize: vertical; /* Allows resizing only in the vertical direction */
+  resize: vertical;
 }
 
-/* Ensures the text box is aligned properly */
 .modal-content p {
   font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
 }
 
-/* Style the Close button */
+/* Modal Buttons */
 #closeModal {
   display: block;
   margin-top: 15px;
@@ -342,6 +323,7 @@ button.add-to-cart {
 #closeModal:hover {
   background: #c9302c;
 }
+
 .close-btn {
   position: absolute;
   top: 10px;
@@ -356,13 +338,12 @@ button.add-to-cart {
   color: red;
 }
 
-/* Add to Cart Button */
 #addToCart {
   margin-top: 15px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
-  background:#f9dddb; /* Green color */
+  background: #f9dddb;
   color: white;
   border: none;
   border-radius: 5px;
@@ -373,7 +354,7 @@ button.add-to-cart {
   background: #f9dddb;
 }
 
-/* shwoing the price styling  */
+/* Price Overlay */
 .modal-image-container {
   position: relative;
   display: inline-block;
@@ -381,17 +362,17 @@ button.add-to-cart {
 }
 
 .modal-image-container img {
-  width: 100%; /* Ensures consistent image size */
+  width: 100%;
   height: auto;
   display: block;
 }
 
 .price-overlay {
   position: absolute;
-  top: 10px; /* Moves price to the very top */
+  top: 10px;
   left: 50%;
-  transform: translateX(-50%); /* Centers price horizontally */
-  background: rgba(0, 0, 0, 0.7); /* Dark background for visibility */
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -400,41 +381,59 @@ button.add-to-cart {
   white-space: nowrap;
 }
 
-
-
-
-/* ---------- Responsive Styles (Mobile < 768px) ---------- */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  /* Make account container full width on small screens */
   .content-container {
-    flex-direction: column; /* Stacks elements vertically on small screens */
-}
+    flex-direction: column;
+  }
+
   .account-container {
-      width: 90%;
-      padding: 20px;
+    width: 90%;
+    padding: 20px;
   }
-  
-  /* Adjust font size for header navigation */
+
+  .vertical-menu {
+    display: none;
+  }
+
+  .search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .search-bar {
+    width: 80%;
+    max-width: none;
+    margin: 0 auto;
+    font-size: 18px;
+    padding: 12px;
+  }
+
   nav ul li a {
-      font-size: 30px;
+    font-size: 30px;
   }
-  .vertical-menu, .gallery {
-    width: 100%; /* Full width for mobile */
-}
-  /* Stack footer content vertically */
+
+  .gallery {
+    width: 100%;
+  }
+
   .footer-info {
-      flex-direction: column;
-      gap: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .footer-links ul {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .about-us,
   .contact-us {
-      flex: none;
-      width: 100%;
-      margin-bottom: 20px;
+    flex: none;
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
