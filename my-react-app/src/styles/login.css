@@ -1,6 +1,7 @@
 /* ---------- Global Styles ---------- */
+
 body {
-  font-family: 'Arial', sans-serif, 'Georgia', serif; /* 'Arial' for body text, 'Georgia' for headings */
+  font-family: 'Arial', sans-serif, 'Georgia', serif; 
   background-color: #A37B73FF; /* Light brown */
   background-size: cover;
   background-repeat: no-repeat;
@@ -87,7 +88,9 @@ input[type="tel"] {
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  margin-top: 20px;
+  margin: 20px auto; /* Changed to auto for horizontal centering */
+  border: none; /* Added to remove default button border */
+  cursor: pointer; /* Added for better UX */
 }
 
 .submit-btn:hover {

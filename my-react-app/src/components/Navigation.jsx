@@ -27,7 +27,7 @@ export default function Navigation() {
 
         {/* Right-Aligned Icons (Login & Cart) */}
         <div className="top-icons">
-          <Link to="/register" className="custom-link me-3" title="Login/Register">
+          <Link to="/login" className="custom-link me-3" title="Login/Register">
             <i className="fas fa-user"></i>
           </Link>
           <Link to="/cart" className="cart-link" title="Shopping Cart">

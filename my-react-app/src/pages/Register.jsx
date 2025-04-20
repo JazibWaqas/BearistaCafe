@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -38,8 +38,6 @@ export default function Register() {
         password: ''
       });
       
-      // Show success message and clear form instead of navigating
-      alert('Registration successful! Please login to continue.');
       navigate('/login');
 
     } catch (error) {
@@ -64,50 +62,58 @@ export default function Register() {
                 <form onSubmit={handleRegisterSubmit}>
                   {registerError && <div className="error-message">{registerError}</div>}
                   
-                  <label htmlFor="register-fullname">Full Name:</label>
-                  <input
-                    type="text"
-                    id="register-fullname"
-                    name="fullname"
-                    value={registerData.fullname}
-                    onChange={handleRegisterChange}
-                    required
-                    disabled={isLoading}
-                  />
+                  <div className="form-field">
+                    <label htmlFor="register-fullname">Full Name:</label>
+                    <input
+                      type="text"
+                      id="register-fullname"
+                      name="fullname"
+                      value={registerData.fullname}
+                      onChange={handleRegisterChange}
+                      required
+                      disabled={isLoading}
+                    />
+                  </div>
       
-                  <label htmlFor="register-email">Email Address:</label>
-                  <input
-                    type="email"
-                    id="register-email"
-                    name="email"
-                    value={registerData.email}
-                    onChange={handleRegisterChange}
-                    required
-                    disabled={isLoading}
-                  />
+                  <div className="form-field">
+                    <label htmlFor="register-email">Email Address:</label>
+                    <input
+                      type="email"
+                      id="register-email"
+                      name="email"
+                      value={registerData.email}
+                      onChange={handleRegisterChange}
+                      required
+                      disabled={isLoading}
+                    />
+                  </div>
       
-                  <label htmlFor="register-phone">Phone Number:</label>
-                  <input
-                    type="tel"
-                    id="register-phone"
-                    name="phone"
-                    value={registerData.phone}
-                    onChange={handleRegisterChange}
-                    required
-                    disabled={isLoading}
-                  />
+                  <div className="form-field">
+                    <label htmlFor="register-phone">Phone Number:</label>
+                    <input
+                      type="tel"
+                      id="register-phone"
+                      name="phone"
+                      value={registerData.phone}
+                      onChange={handleRegisterChange}
+                      required
+                      disabled={isLoading}
+                    />
+                  </div>
       
-                  <label htmlFor="register-password">Password:</label>
-                  <input
-                    type="password"
-                    id="register-password"
-                    name="password"
-                    value={registerData.password}
-                    onChange={handleRegisterChange}
-                    required
-                    disabled={isLoading}
-                    minLength="6"
-                  />
+                  <div className="form-field">
+                    <label htmlFor="register-password">Password:</label>
+                    <input
+                      type="password"
+                      id="register-password"
+                      name="password"
+                      value={registerData.password}
+                      onChange={handleRegisterChange}
+                      required
+                      disabled={isLoading}
+                      minLength="6"
+                    />
+                  </div>
       
                   <button 
                     type="submit" 
@@ -116,7 +122,10 @@ export default function Register() {
                   >
                     {isLoading ? 'Registering...' : 'Register'}
                   </button>
-                  <label className="login-link">Already have an account? <a href="/login">Login</a></label>
+                  
+                  <div className="login-link">
+                    Already have an account? <Link to="/login">Login</Link>
+                  </div>
                 </form>
               </div>
             </div>

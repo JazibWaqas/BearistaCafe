@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -58,27 +58,31 @@ export default function Login() {
           <form onSubmit={handleLoginSubmit}>
             {loginError && <div className="error-message">{loginError}</div>}
             
-            <label htmlFor="login-email">Email Address:</label>
-            <input
-              type="email"
-              id="login-email"
-              name="email"
-              value={loginData.email}
-              onChange={handleLoginChange}
-              required
-              disabled={isLoading}
-            />
+            <div className="form-field">
+              <label htmlFor="login-email">Email Address:</label>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                value={loginData.email}
+                onChange={handleLoginChange}
+                required
+                disabled={isLoading}
+              />
+            </div>
 
-            <label htmlFor="login-password">Password:</label>
-            <input
-              type="password"
-              id="login-password"
-              name="password"
-              value={loginData.password}
-              onChange={handleLoginChange}
-              required
-              disabled={isLoading}
-            />
+            <div className="form-field">
+              <label htmlFor="login-password">Password:</label>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                required
+                disabled={isLoading}
+              />
+            </div>
 
             <button 
               type="submit" 
@@ -87,6 +91,10 @@ export default function Login() {
             >
               {isLoading ? 'Logging in...' : 'Login'}
             </button>
+            
+            <div className="register-link">
+              Don't have an account? <Link to="/register">Register</Link>
+            </div>
           </form>
         </div>
       </div>
