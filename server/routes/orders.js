@@ -5,10 +5,9 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 
 // Create new order
+// In server/routes/orders.js - update the post route
 router.post('/', auth, async (req, res) => {
     try {
-        // console.log('REQ.USER:', req.user);
-
         const {
             items,
             deliveryDetails,
@@ -18,11 +17,17 @@ router.post('/', auth, async (req, res) => {
             paymentMethod = 'Cash on Delivery'
         } = req.body;
 
+        // Ensure each item has an image
+        const itemsWithImages = items.map(item => ({
+            ...item,
+            image: item.image || '/assets/fallback.jpg'
+        }));
+
         const newOrder = new Order({
             userId: req.user.id,
             name: req.user.fullname,
             email: req.user.email,
-            items,
+            items: itemsWithImages,
             deliveryDetails,
             totalAmount,
             tax,
@@ -32,7 +37,6 @@ router.post('/', auth, async (req, res) => {
 
         const savedOrder = await newOrder.save();
 
-        // Update user's orders array
         await User.findByIdAndUpdate(req.user.id, {
             $push: { orders: savedOrder._id },
             $inc: { orderCount: 1 }
@@ -44,7 +48,6 @@ router.post('/', auth, async (req, res) => {
         res.status(500).json({ message: 'Server error while creating order' });
     }
 });
-
 // Get all orders for a user
 router.get('/my-orders', auth, async (req, res) => {
     try {
