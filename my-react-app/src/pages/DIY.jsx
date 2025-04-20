@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { useCart } from '../context/CartContext'; // Add this import
+import { useCart } from '../context/CartContext';
 import "../styles/diy.css";
 
 export default function DIY() {
-  const { addToCart } = useCart(); // Add this line to use cart context
+  const { addToCart } = useCart();
   const [currentStep, setCurrentStep] = useState('start');
   const [orderDetails, setOrderDetails] = useState({
     base: '',
@@ -37,7 +37,6 @@ export default function DIY() {
       setOrderDetails(prev => ({
         ...prev,
         ...updates
-        
       }));
     } else if (type === 'checkbox') {
       setOrderDetails(prev => ({
@@ -49,9 +48,7 @@ export default function DIY() {
     }
   };
 
-  // Update the addToCart function to use the cart context
   const handleAddToCart = async () => {
-    // Create a unique ID for the DIY drink
     const diyId = `diy-${Date.now()}`;
     
     const newDrink = {
@@ -68,18 +65,15 @@ export default function DIY() {
         extras: orderDetails.extras
       }
     };
-
+  
     await addToCart(newDrink);
-    alert(`Your custom drink '${newDrink.name}' for Rs. ${newDrink.price} has been added to your cart!`);
     
-    // Reset the form
     setOrderDetails({
       base: '',
       milk: '',
       syrups: [],
       extras: []
     });
-    setCurrentStep('start');
   };
 
   return (
@@ -88,7 +82,6 @@ export default function DIY() {
       <div className="diy_container">
         <h1>Build Your Own Coffee ☕</h1>
 
-        {/* Start Screen */}
         {currentStep === 'start' && (
           <div id="start-screen">
             <p>Customize your coffee just the way you like it!</p>
@@ -98,7 +91,6 @@ export default function DIY() {
           </div>
         )}
 
-        {/* Step 1: Base */}
         {currentStep === 'step1' && (
           <div className="step">
             <h2>Step 1: Choose Your Type of Coffee</h2>
@@ -137,7 +129,7 @@ export default function DIY() {
               <button 
                 className="next" 
                 onClick={() => setCurrentStep('step2')}
-                disabled={!orderDetails.base} // Disable if no base selected
+                disabled={!orderDetails.base}
               >
                 Next ➝
               </button>
@@ -145,7 +137,6 @@ export default function DIY() {
           </div>
         )}
 
-        {/* Step 2: Milk */}
         {currentStep === 'step2' && (
           <div className="step">
             <h2>Step 2: Choose Your Milk</h2>
@@ -184,7 +175,7 @@ export default function DIY() {
               <button 
                 className="next" 
                 onClick={() => setCurrentStep('step3')}
-                disabled={!orderDetails.milk} // Disable if no milk selected
+                disabled={!orderDetails.milk}
               >
                 Next ➝
               </button>
@@ -192,7 +183,6 @@ export default function DIY() {
           </div>
         )}
 
-        {/* Step 3: Sweetener */}
         {currentStep === 'step3' && (
           <div className="step">
             <h2>Step 3: Choose Your Sweetener</h2>
@@ -214,7 +204,6 @@ export default function DIY() {
           </div>
         )}
 
-        {/* Step 4: Extras */}
         {currentStep === 'step4' && (
           <div className="step">
             <h2>Step 4: Any Extra's????</h2>
@@ -236,27 +225,47 @@ export default function DIY() {
           </div>
         )}
 
-        {/* Summary */}
-        {currentStep === 'summary' && (
-          <div className="step">
-            <h2>Order Summary</h2>
-            <div className="summary-details">
-              <p><strong>Base:</strong> {orderDetails.base}</p>
-              <p><strong>Milk:</strong> {orderDetails.milk}</p>
-              {orderDetails.syrups.length > 0 && (
-                <p><strong>Syrups:</strong> {orderDetails.syrups.join(', ')}</p>
-              )}
-              {orderDetails.extras.length > 0 && (
-                <p><strong>Extras:</strong> {orderDetails.extras.join(', ')}</p>
-              )}
-              <p><strong>Price:</strong> Rs. {orderDetails.price}</p>
-            </div>
-            <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
-            <Link to="/cart" className="back">View Cart</Link>
-          </div>
-        )}
-      </div>
 
+{currentStep === 'summary' && (
+  <div className="step">
+    <h2>Order Summary</h2>
+    {!orderDetails.base ? (
+      // Show only buttons if order details are empty (after adding to cart)
+      <div className="summary-buttons">
+        <button className="start" onClick={() => setCurrentStep('step1')}>
+          Create Another ☕
+        </button>
+        <Link to="/cart" className="view-cart-button">
+          View Cart
+        </Link>
+      </div>
+    ) : (
+      // Show full summary before adding to cart
+      <>
+        <div className="summary-details">
+          <p><strong>Base:</strong> {orderDetails.base}</p>
+          <p><strong>Milk:</strong> {orderDetails.milk}</p>
+          {orderDetails.syrups.length > 0 && (
+            <p><strong>Syrups:</strong> {orderDetails.syrups.join(', ')}</p>
+          )}
+          {orderDetails.extras.length > 0 && (
+            <p><strong>Extras:</strong> {orderDetails.extras.join(', ')}</p>
+          )}
+          <p><strong>Price:</strong> Rs. {orderDetails.price}</p>
+        </div>
+        <div className="summary-buttons">
+          <button className="add-to-cart-button" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <Link to="/cart" className="view-cart-button">
+            View Cart
+          </Link>
+        </div>
+      </>
+    )}
+  </div>
+)}
+      </div>
       <Footer />
     </div>
   );

@@ -107,6 +107,42 @@ input[type="radio"] {
 .next:hover, .back:hover, .start:hover {
     opacity: 0.8;
 }
+.start {
+    background-color: #5C4033;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start:hover {
+    background-color: #4a3328;
+  }
+  
+
+.summary-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .view-cart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5C4033;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-cart-button:hover {
+    background-color: #4a3328;
+  }
 
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */
 @media (max-width: 768px) {
