@@ -78,6 +78,14 @@ export default function Account() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Account Info being submitted:", accountInfo);
+
+    if (accountInfo.phone === '' || accountInfo.location === '') {
+      alert('Please make changes to your account.');
+      return;
+    }
+    
+    
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -89,7 +97,9 @@ export default function Account() {
         'http://localhost:5000/api/auth/update',
         {
           phone: accountInfo.phone,
-          location: accountInfo.location
+          location: accountInfo.location,
+          fullname: accountInfo.fullname,
+          email: accountInfo.email
         },
         {
           headers: {
@@ -100,12 +110,19 @@ export default function Account() {
       );
 
       setAccountInfo(response.data);
-      setIsEditing(false);
       alert('Account updated successfully!');
+      setIsEditing(false);
     } catch (err) {
       console.error('Update error:', err);
       alert('Update failed: ' + (err.response?.data?.msg || 'Unknown error'));
     }
+  };
+  const handleEditToggle = () => {
+    setIsEditing(true);
+  };
+  
+  const handleCancelEdit = () => {
+    setIsEditing(false);
   };
 
   const handleChange = (e) => {
@@ -133,7 +150,7 @@ export default function Account() {
       <Navigation />
       <div className="account-container">
         <h2>Your Account</h2>
-        
+  
         {/* Account Information Section */}
         <div className="account-section">
           <h3>Account Information</h3>
@@ -142,22 +159,26 @@ export default function Account() {
               <label>Full Name</label>
               <input
                 type="text"
+                name="fullname"
                 value={accountInfo.fullname}
-                readOnly
-                className="input-field readonly"
+                onChange={handleChange}
+                className="input-field"
+                readOnly={!isEditing}
               />
             </div>
-
+  
             <div className="form-group">
               <label>Email</label>
               <input
                 type="email"
+                name="email"
                 value={accountInfo.email}
-                readOnly
-                className="input-field readonly"
+                onChange={handleChange}
+                className="input-field"
+                readOnly={!isEditing}
               />
             </div>
-
+  
             <div className="form-group">
               <label>Phone Number</label>
               <input
@@ -169,7 +190,7 @@ export default function Account() {
                 readOnly={!isEditing}
               />
             </div>
-
+  
             <div className="form-group">
               <label>Location</label>
               <input
@@ -181,12 +202,12 @@ export default function Account() {
                 readOnly={!isEditing}
               />
             </div>
-
+  
             <div className="button-group">
               {!isEditing ? (
                 <button
                   type="button"
-                  onClick={() => setIsEditing(true)}
+                  onClick={handleEditToggle}  // Toggle the state to start editing
                   className="edit-button"
                 >
                   Edit Information
@@ -198,7 +219,7 @@ export default function Account() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setIsEditing(false)}
+                    onClick={handleCancelEdit}  // Toggle off the editing mode
                     className="cancel-button"
                   >
                     Cancel
@@ -208,57 +229,7 @@ export default function Account() {
             </div>
           </form>
         </div>
-
-
-    {/* Frequently Ordered Section */}
-    <div className="account-section">
-      <div className="section-header" onClick={() => setShowFrequent(!showFrequent)}>
-        <h3 style={{ margin: 0 }}>Order History</h3>
-        <span style={{ cursor: 'pointer', transform: showFrequent ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}>▼</span>
       </div>
-      
-      <div style={{ 
-        maxHeight: showFrequent ? '300px' : '0',
-        overflow: 'hidden',
-        transition: 'max-height 0.3s ease-out',
-        marginTop: showFrequent ? '20px' : '0'
-      }}>
-        {frequentItems.length > 0 ? (
-          <div className="frequent-items-container">
-            {frequentItems.map((item, index) => (
-              <div key={index} className="frequent-item-card">
-                <img 
-                  src={item.image} 
-                  alt={item.name}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/assets/fallback.jpg';
-                  }}
-                />
-                <div className="frequent-item-info">
-                  <h4>{item.name}</h4>
-                  {(item.size || item.milk) && (
-                    <p className="customization">
-                      {[item.size, item.milk].filter(Boolean).join(' • ')}
-                    </p>
-                  )}
-                  {item.instructions && (
-                    <p className="instructions">"{item.instructions}"</p>
-                  )}
-                  <span className="order-count">
-                    Ordered {item.count} time{item.count !== 1 ? 's' : ''}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p style={{ textAlign: 'center', color: '#666' }}>No orders yet</p>
-        )}
-      </div>
-    </div>
-</div>
       <Footer />
     </div>
-  );
-}
+  );}

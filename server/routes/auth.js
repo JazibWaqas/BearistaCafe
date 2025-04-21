@@ -130,7 +130,7 @@ router.get('/me', auth, async (req, res) => {
 // PUT /api/auth/update
 router.put('/update', auth, async (req, res) => {
   try {
-    const { phone, location } = req.body;
+    const { phone, location, fullname, email } = req.body;
     
     // Find user by id
     const user = await User.findById(req.user.id);
@@ -141,7 +141,8 @@ router.put('/update', auth, async (req, res) => {
     // Update fields if provided
     if (phone) user.phone = phone;
     if (location !== undefined) user.location = location;
-
+    if (fullname) user.fullname = fullname;  
+    if (email) user.email = email;
     // Save updated user
     await user.save();
 
