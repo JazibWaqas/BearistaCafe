@@ -3,13 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PickupReceiptModal from '../components/PickupReciptModal';
 import axios from 'axios';
 
 export default function ShoppingCart() {
   const navigate = useNavigate();
-  const { cart, loading, updateQuantity, removeFromCart } = useCart();
+  const { cart, loading, updateQuantity, removeFromCart, clearCart } = useCart();
   const [deliveryOption, setDeliveryOption] = useState('pickup');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPickupReceipt, setShowPickupReceipt] = useState(false);
+  const [pickupOrderDetails, setPickupOrderDetails] = useState(null);
 
   const calculateTotals = () => {
     const taxRate = 0.15;
@@ -22,7 +25,7 @@ export default function ShoppingCart() {
   const handleRemoveItem = async (itemId) => {
     try {
       await removeFromCart(itemId);
-      setErrorMessage(''); // Clear any existing error messages
+      setErrorMessage('');
     } catch (error) {
       console.error('Error removing item:', error);
       setErrorMessage('Failed to remove item from cart');
@@ -33,7 +36,7 @@ export default function ShoppingCart() {
     try {
       if (newQuantity < 1) return;
       await updateQuantity(itemId, parseInt(newQuantity));
-      setErrorMessage(''); // Clear any existing error messages
+      setErrorMessage('');
     } catch (error) {
       console.error('Error updating quantity:', error);
       setErrorMessage('Failed to update quantity');
@@ -45,8 +48,22 @@ export default function ShoppingCart() {
       setErrorMessage('Your cart is empty. Add items before proceeding to checkout.');
       return;
     }
-    setErrorMessage(''); // Clear any existing error messages
-    navigate('/checkout');
+    setErrorMessage('');
+    
+    if (deliveryOption === 'pickup') {
+      const { total, tax, grandTotal } = calculateTotals();
+      const orderDetails = {
+        items: [...cart],
+        total: total,
+        tax: tax,
+        grandTotal: grandTotal
+      };
+      setPickupOrderDetails(orderDetails);
+      setShowPickupReceipt(true);
+      clearCart();
+    } else {
+      navigate('/checkout');
+    }
   };
 
   const { total, tax, grandTotal } = calculateTotals();
@@ -69,7 +86,6 @@ export default function ShoppingCart() {
       <div className="cart-container">
         <h2>Your Cart</h2>
         
-        {/* Error Message Display */}
         {errorMessage && (
           <div className="error-message">
             {errorMessage}
@@ -173,6 +189,18 @@ export default function ShoppingCart() {
           </div>
         )}
       </div>
+
+      {showPickupReceipt && pickupOrderDetails && (
+        <PickupReceiptModal
+          order={pickupOrderDetails}
+          onClose={() => {
+            setShowPickupReceipt(false);
+            setPickupOrderDetails(null);
+            navigate('/menu');
+          }}
+        />
+      )}
+
       <Footer />
     </div>
   );
