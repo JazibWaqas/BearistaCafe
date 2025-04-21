@@ -78,7 +78,6 @@ export default function Account() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Account Info being submitted:", accountInfo);
 
     if (accountInfo.phone === '' || accountInfo.location === '') {
       alert('Please make changes to your account.');
@@ -110,19 +109,20 @@ export default function Account() {
       );
 
       setAccountInfo(response.data);
+      
       alert('Account updated successfully!');
-      setIsEditing(false);
     } catch (err) {
       console.error('Update error:', err);
       alert('Update failed: ' + (err.response?.data?.msg || 'Unknown error'));
     }
   };
   const handleEditToggle = () => {
-    setIsEditing(true);
+    setIsEditing(true); // Set editing state to true to allow editing
   };
-  
+
+  // Handle canceling editing and reverting to read-only state
   const handleCancelEdit = () => {
-    setIsEditing(false);
+    setIsEditing(false); // Set editing state to false to revert to read-only
   };
 
   const handleChange = (e) => {
@@ -150,7 +150,7 @@ export default function Account() {
       <Navigation />
       <div className="account-container">
         <h2>Your Account</h2>
-  
+        
         {/* Account Information Section */}
         <div className="account-section">
           <h3>Account Information</h3>
@@ -163,10 +163,10 @@ export default function Account() {
                 value={accountInfo.fullname}
                 onChange={handleChange}
                 className="input-field"
-                readOnly={!isEditing}
+                readOnly={!isEditing} // Make this field read-only if not editing
               />
             </div>
-  
+
             <div className="form-group">
               <label>Email</label>
               <input
@@ -178,7 +178,7 @@ export default function Account() {
                 readOnly={!isEditing}
               />
             </div>
-  
+
             <div className="form-group">
               <label>Phone Number</label>
               <input
@@ -190,7 +190,7 @@ export default function Account() {
                 readOnly={!isEditing}
               />
             </div>
-  
+
             <div className="form-group">
               <label>Location</label>
               <input
@@ -202,12 +202,12 @@ export default function Account() {
                 readOnly={!isEditing}
               />
             </div>
-  
+
             <div className="button-group">
-              {!isEditing ? (
+            {!isEditing ? (
                 <button
                   type="button"
-                  onClick={handleEditToggle}  // Toggle the state to start editing
+                  onClick={handleEditToggle}  // Allow editing on click
                   className="edit-button"
                 >
                   Edit Information
@@ -219,7 +219,7 @@ export default function Account() {
                   </button>
                   <button
                     type="button"
-                    onClick={handleCancelEdit}  // Toggle off the editing mode
+                    onClick={handleCancelEdit}  // Cancel editing mode
                     className="cancel-button"
                   >
                     Cancel
@@ -229,7 +229,58 @@ export default function Account() {
             </div>
           </form>
         </div>
+
+
+    {/* Frequently Ordered Section */}
+    <div className="account-section">
+      <div className="section-header" onClick={() => setShowFrequent(!showFrequent)}>
+        <h3 style={{ margin: 0 }}>Order History</h3>
+        <span style={{ cursor: 'pointer', transform: showFrequent ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}>▼</span>
       </div>
+      
+      <div style={{ 
+        maxHeight: showFrequent ? '300px' : '0',
+        overflow: 'hidden',
+        transition: 'max-height 0.3s ease-out',
+        marginTop: showFrequent ? '20px' : '0'
+      }}>
+        {frequentItems.length > 0 ? (
+          <div className="frequent-items-container">
+            {frequentItems.map((item, index) => (
+              <div key={index} className="frequent-item-card">
+                <img 
+                  src={item.image} 
+                  alt={item.name}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/fallback.jpg';
+                  }}
+                />
+                <div className="frequent-item-info">
+                  <h4>{item.name}</h4>
+                  {(item.size || item.milk) && (
+                    <p className="customization">
+                      {[item.size, item.milk].filter(Boolean).join(' • ')}
+                    </p>
+                  )}
+                  {item.instructions && (
+                    <p className="instructions">"{item.instructions}"</p>
+                  )}
+                  <span className="order-count">
+                    Ordered {item.count} time{item.count !== 1 ? 's' : ''}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p style={{ textAlign: 'center', color: '#666' }}>No orders yet</p>
+        )}
+      </div>
+    </div>
+</div>
       <Footer />
     </div>
-  );}
+  );
+}
+
