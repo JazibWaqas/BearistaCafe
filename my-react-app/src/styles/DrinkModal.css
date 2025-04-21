@@ -6,15 +6,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 550px;
+  width: 90%; /* Changed from fixed 1000px */
   max-width: 1000px;
+  height: 90vh; /* Changed from fixed 550px */
+  max-height: 550px;
   background: white;
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   padding: 20px;
   animation: fadeIn 0.3s ease-in-out;
+  overflow-y: auto; /* Added for mobile scrolling */
 }
 
 /* Modal Overlay (Background Blur) */
@@ -174,5 +176,123 @@
   to {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+}
+/* Keep all the existing styles until the media queries, then replace the media queries with these: */
+@media (max-width: 768px) {
+  .modal-container {
+    width: 95%;
+    height: auto;
+    max-height: 95vh; /* Increased to allow more content */
+    padding: 10px;
+  }
+
+  .modal-header {
+    padding: 5px;
+    margin-bottom: 5px; /* Reduced space after header */
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reduced gap between elements */
+    padding: 5px; /* Reduced padding */
+  }
+
+  .modal-image-container {
+    width: 100%;
+    padding: 0;
+    height: auto;
+    max-height: 30vh; /* Make image height dynamic */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-image {
+    width: auto;
+    height: 100%;
+    max-height: 25vh; /* Dynamic image height */
+    max-width: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+  }
+
+  .modal-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Make options more compact */
+  .size-options,
+  .milk-options,
+  .sweetness-options {
+    margin: 2px 0; /* Reduced margin between option groups */
+    gap: 0; /* Removed gap between options */
+
+    width: 100%;
+  }
+
+  .size-options label,
+  .milk-options label,
+  .sweetness-options label {
+    font-size: 14px;
+    margin-bottom: 1px; /* Minimal space between options */
+    padding: 2px 0;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .size-options input,
+  .milk-options input,
+  .sweetness-options input {
+    margin-right: 8px;
+    width: 16px; /* Fixed width for radio buttons */
+    height: 16px; /* Fixed height for radio buttons */
+    flex-shrink: 0; /* Prevent radio button from shrinking */
+  }
+
+  /* Larger square special instructions box */
+  .special-instructions {
+    width: 95vw;
+    max-width: calc(100vw - 20px);
+    height: 200px; /* Made taller */
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px auto;
+    aspect-ratio: 1; /* Makes it square */
+    box-sizing: border-box;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    width: 98%;
+    padding: 5px;
+  }
+
+  .modal-image {
+    max-height: 20vh; /* Slightly smaller for mobile */
+  }
+
+  .size-options label,
+  .milk-options label,
+  .sweetness-options label {
+    font-size: 13px;
+  }
+
+  /* Keep special instructions box square but slightly smaller */
+  .special-instructions {
+    height: 180px;
+    font-size: 13px;
+    width: 100%;
   }
 }
