@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext'; // Add this import
+import { useCart } from '../context/CartContext';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import axios from 'axios';
 
 export default function ShoppingCart() {
   const navigate = useNavigate();
-  const { cart, loading, updateQuantity, removeFromCart } = useCart(); // Add this line
+  const { cart, loading, updateQuantity, removeFromCart } = useCart();
   const [deliveryOption, setDeliveryOption] = useState('pickup');
-  const [couponCode, setCouponCode] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const calculateTotals = () => {
     const taxRate = 0.15;
@@ -21,35 +22,30 @@ export default function ShoppingCart() {
   const handleRemoveItem = async (itemId) => {
     try {
       await removeFromCart(itemId);
+      setErrorMessage(''); // Clear any existing error messages
     } catch (error) {
       console.error('Error removing item:', error);
-      alert('Failed to remove item from cart');
+      setErrorMessage('Failed to remove item from cart');
     }
   };
 
   const handleUpdateQuantity = async (itemId, newQuantity) => {
     try {
-      if (newQuantity < 1) return; // Prevent negative quantities
+      if (newQuantity < 1) return;
       await updateQuantity(itemId, parseInt(newQuantity));
+      setErrorMessage(''); // Clear any existing error messages
     } catch (error) {
       console.error('Error updating quantity:', error);
-      alert('Failed to update quantity');
-    }
-  };
-
-  const applyCoupon = () => {
-    if (couponCode.trim() !== '') {
-      alert('Coupon applied successfully!');
-    } else {
-      alert('Please enter a valid coupon code.');
+      setErrorMessage('Failed to update quantity');
     }
   };
 
   const goToCheckout = () => {
     if (cart.length === 0) {
-      alert("Your cart is empty. Add items before proceeding to checkout.");
+      setErrorMessage('Your cart is empty. Add items before proceeding to checkout.');
       return;
     }
+    setErrorMessage(''); // Clear any existing error messages
     navigate('/checkout');
   };
 
@@ -72,6 +68,13 @@ export default function ShoppingCart() {
       <Navigation />
       <div className="cart-container">
         <h2>Your Cart</h2>
+        
+        {/* Error Message Display */}
+        {errorMessage && (
+          <div className="error-message">
+            {errorMessage}
+          </div>
+        )}
         
         <div id="cart-items">
           {cart.length === 0 ? (
@@ -157,18 +160,6 @@ export default function ShoppingCart() {
           </button>
         </div>
 
-        <div className="coupon-section">
-          <input
-            type="text"
-            placeholder="Enter Coupon Code"
-            value={couponCode}
-            onChange={(e) => setCouponCode(e.target.value)}
-          />
-          <button className="apply-coupon" onClick={applyCoupon}>
-            Apply
-          </button>
-        </div>
-
         <button className="checkout-btn" onClick={goToCheckout}>
           Checkout <i className="fas fa-arrow-right"></i>
         </button>
@@ -182,7 +173,6 @@ export default function ShoppingCart() {
           </div>
         )}
       </div>
-
       <Footer />
     </div>
   );
