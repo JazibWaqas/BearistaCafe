@@ -43,7 +43,7 @@ export default function ShoppingCart() {
     }
   };
 
-  const goToCheckout = () => {
+  const goToCheckout = async () => {  // Add async here
     if (cart.length === 0) {
       setErrorMessage('Your cart is empty. Add items before proceeding to checkout.');
       return;
@@ -51,16 +51,56 @@ export default function ShoppingCart() {
     setErrorMessage('');
     
     if (deliveryOption === 'pickup') {
-      const { total, tax, grandTotal } = calculateTotals();
-      const orderDetails = {
-        items: [...cart],
-        total: total,
-        tax: tax,
-        grandTotal: grandTotal
-      };
-      setPickupOrderDetails(orderDetails);
-      setShowPickupReceipt(true);
-      clearCart();
+      try {
+        const { total, tax, grandTotal } = calculateTotals();
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setErrorMessage('Please login to place an order');
+          setTimeout(() => navigate('/login'), 2000);
+          return;
+        }
+  
+        // Save pickup order to database
+        const orderData = {
+          items: cart.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            size: item.size || 'N/A',
+            milk: item.milk || 'None',
+            sweetness: item.sweetness || 'None',
+            instructions: item.instructions || '',
+            image: item.image || '',
+            isDIY: item.isDIY || false,
+            diyDetails: item.diyDetails || null
+          })),
+          totalAmount: total,
+          tax,
+          grandTotal,
+          orderType: 'pickup',
+          status: 'pending'
+        };
+  
+        await axios.post('http://localhost:5000/api/orders', orderData, {
+          headers: { 
+            'x-auth-token': token,
+            'Content-Type': 'application/json'
+          }
+        });
+  
+        const orderDetails = {
+          items: [...cart],
+          total: total,
+          tax: tax,
+          grandTotal: grandTotal
+        };
+        setPickupOrderDetails(orderDetails);
+        setShowPickupReceipt(true);
+        clearCart();
+      } catch (error) {
+        console.error('Error creating pickup order:', error);
+        setErrorMessage('Failed to create order. Please try again.');
+      }
     } else {
       navigate('/checkout');
     }
