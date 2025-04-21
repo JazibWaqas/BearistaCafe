@@ -1,122 +1,298 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 2px dashed #ccc;
+  width: 100%;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+}
+
+.order-details {
+  text-align: center;
+}
+
+.order-info {
+  margin-bottom: 1.5rem;
+}
+
+.order-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.cafe-address {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.receipt-divider {
+  border-top: 1px dashed #ccc;
+  margin: 1rem 0;
+}
+
+.order-number {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0.5rem 0;
+  background-color: #f8f8f8;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.order-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.estimated-time {
+  font-size: 0.9rem;
+  color: #5C4033;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+.delivery-details, .order-summary {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.details-table, .items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+}
+
+.details-table td {
+  padding: 4px 0;
+  font-size: 0.9rem;
+}
+
+.details-table td:first-child {
+  font-weight: 600;
+  width: 30%;
+}
+
+.items-table th {
+  text-align: left;
+  padding: 8px 4px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.items-table td {
+  padding: 8px 4px;
+  font-size: 0.9rem;
+  border-bottom: 1px dotted #eee;
+}
+
+.order-totals {
+  margin-top: 1rem;
+  background-color: #f8f8f8;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.9rem;
+}
+
+.grand-total {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px dashed #ccc;
+}
+
+.payment-info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background-color: #f8f8f8;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.receipt-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding-top: 1rem;
+  border-top: 2px dashed #ccc;
+}
+
+.receipt-footer p {
+  margin: 5px 0;
+}
+
+.back-to-menu-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #5C4033;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.back-to-menu-btn:hover {
+  background-color: #3e2a1f;
+}
+
+/* Pickup specific styles */
+.pickup-info {
+  text-align: left;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+}
+
+.pickup-info h4 {
+  color: #333;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.pickup-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.pickup-instructions {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #fff3e6;
+  border-left: 4px solid #5C4033;
+  border-radius: 0 4px 4px 0;
+}
+
+.pickup-instructions h4 {
+  color: #5C4033;
+  margin: 0 0 0.5rem 0;
+}
+
+.pickup-instructions ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: none;
+}
+
+.pickup-instructions li {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #666;
+  position: relative;
+}
+
+.pickup-instructions li:before {
+  content: "•";
+  color: #5C4033;
+  position: absolute;
+  left: -1rem;
+}
+
+@media (max-width: 480px) {
   .modal-content {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
+    width: 95%;
+    padding: 1rem;
   }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-  
+
   .modal-header h2 {
-    margin: 0;
-    color: #2c3e50;
+    font-size: 1.3rem;
   }
-  
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
+
+  .details-table td,
+  .items-table td,
+  .items-table th {
+    font-size: 0.8rem;
   }
-  
-  .order-details {
-    margin-bottom: 2rem;
+
+  .pickup-info {
+    padding: 0.8rem;
   }
-  
-  .order-info {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-  }
-  
-  .order-number {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .estimated-time {
-    color: #28a745;
-    font-weight: 500;
-  }
-  
-  .delivery-details, .order-summary {
-    margin-bottom: 2rem;
-  }
-  
-  .order-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .order-totals {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 2px solid #eee;
-  }
-  
-  .total-line {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-  }
-  
-  .grand-total {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #eee;
-  }
-  
-  .payment-info {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .track-order-btn {
-    width: 100%;
-    padding: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .pickup-info h4 {
     font-size: 1rem;
-    font-weight: 500;
   }
-  
-  .track-order-btn:hover {
-    background-color: #0056b3;
+
+  .pickup-info p {
+    font-size: 0.8rem;
   }
+
+  .pickup-instructions {
+    padding: 0.8rem;
+  }
+
+  .pickup-instructions h4 {
+    font-size: 1rem;
+  }
+
+  .pickup-instructions li {
+    font-size: 0.8rem;
+  }
+}

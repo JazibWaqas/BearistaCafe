@@ -182,29 +182,6 @@ input[type="number"] {
     color: white;
 }
 
-/* ---------- Coupon Section ---------- */
-.coupon-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.coupon-section input {
-    flex-grow: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.apply-coupon {
-    background: #5C4033;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 /* ---------- Checkout Button ---------- */
 .checkout-btn {
@@ -234,6 +211,17 @@ input[type="number"] {
     font-size: 16px;
 }
 
+
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
 
 
 /* ---------- Responsive Styles (Mobile < 768px) ---------- */

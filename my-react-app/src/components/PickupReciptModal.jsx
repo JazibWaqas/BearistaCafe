@@ -1,12 +1,12 @@
 import React from 'react';
 import '../styles/OrderConfirmationModal.css';
 
-const OrderConfirmationModal = ({ order, onClose }) => {
+const PickupReceiptModal = ({ order, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-header">
-          <h2>Order Confirmation</h2>
+          <h2>Pickup Receipt</h2>
           <button className="close-button" onClick={onClose}>&times;</button>
         </div>
         
@@ -15,23 +15,18 @@ const OrderConfirmationModal = ({ order, onClose }) => {
             <h3>Bearista Café</h3>
             <p className="cafe-address">13-C, Main Khayban-e-Bukhari, Defence Phase 6, Karachi</p>
             <div className="receipt-divider"></div>
-            <p className="order-number">Order #{order._id?.slice(-6).toUpperCase()}</p>
+            <p className="order-number">Order #{Math.random().toString(36).substr(2, 6).toUpperCase()}</p>
             <p className="order-date">{new Date().toLocaleString()}</p>
-            <p className="estimated-time">Estimated Delivery: 20-25 minutes</p>
+            <p className="estimated-time">Estimated Pickup Time: 15-20 minutes</p>
           </div>
 
           <div className="receipt-divider"></div>
 
-          <div className="delivery-details">
-            <h4>Delivery Information</h4>
-            <table className="details-table">
-              <tbody>
-                <tr><td>Name:</td><td>{order.deliveryDetails.customerName}</td></tr>
-                <tr><td>Contact:</td><td>{order.deliveryDetails.contactInfo}</td></tr>
-                <tr><td>Address:</td><td>{order.deliveryDetails.detailedAddress}</td></tr>
-                <tr><td>Area:</td><td>{order.deliveryDetails.area}</td></tr>
-              </tbody>
-            </table>
+          <div className="pickup-info">
+            <h4>Pickup Information</h4>
+            <p><strong>Location:</strong> Bearista Café Defence Phase 6</p>
+            <p><strong>Address:</strong> 13-C, Main Khayban-e-Bukhari</p>
+            <p><strong>Contact:</strong> +92 302 3626078</p>
           </div>
 
           <div className="receipt-divider"></div>
@@ -62,7 +57,7 @@ const OrderConfirmationModal = ({ order, onClose }) => {
             <div className="order-totals">
               <div className="total-line">
                 <span>Subtotal:</span>
-                <span>Rs. {order.totalAmount.toFixed(2)}</span>
+                <span>Rs. {order.total.toFixed(2)}</span>
               </div>
               <div className="total-line">
                 <span>Tax (15%):</span>
@@ -78,11 +73,12 @@ const OrderConfirmationModal = ({ order, onClose }) => {
           <div className="receipt-divider"></div>
 
           <div className="payment-info">
-            <p>Payment Method: {order.paymentMethod}</p>
+            <p>Payment Method: Cash on Pickup</p>
           </div>
 
           <div className="receipt-footer">
             <p>Thank you for choosing Bearista Café</p>
+            <p>Please show this receipt when collecting your order</p>
             <p>For support: +92 302 3626078</p>
           </div>
         </div>
@@ -95,4 +91,4 @@ const OrderConfirmationModal = ({ order, onClose }) => {
   );
 };
 
-export default OrderConfirmationModal;
+export default PickupReceiptModal;

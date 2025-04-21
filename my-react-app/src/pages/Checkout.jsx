@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation';
 import OrderConfirmationModal from '../components/OrderConfirmationModal';
 import '../styles/checkout.css';
 
+// Set the base URL for all axios requests
 axios.defaults.baseURL = 'http://localhost:5000';
 
 const Checkout = () => {
@@ -14,6 +15,7 @@ const Checkout = () => {
   const { cart, clearCart } = useCart();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     customerName: '',
     contactInfo: '',
@@ -22,7 +24,6 @@ const Checkout = () => {
   });
 
   useEffect(() => {
-    // Try to fetch user details when component mounts
     const fetchUserDetails = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -32,7 +33,6 @@ const Checkout = () => {
           headers: { 'x-auth-token': token }
         });
 
-        // Pre-fill form with user details
         setFormData({
           customerName: response.data.fullname || '',
           contactInfo: response.data.phone || '',
@@ -41,6 +41,7 @@ const Checkout = () => {
         });
       } catch (error) {
         console.error('Error fetching user details:', error);
+        setErrorMessage('Failed to load user details. Please fill in the form manually.');
       }
     };
 
@@ -61,18 +62,19 @@ const Checkout = () => {
       ...prev,
       [id]: value
     }));
+    setErrorMessage('');
   };
 
   const placeOrder = async () => {
     const { customerName, contactInfo, area, detailedAddress } = formData;
 
     if (!customerName || !contactInfo || !area || !detailedAddress) {
-      alert('Please fill in all required fields.');
+      setErrorMessage('Please fill in all required fields.');
       return;
     }
 
     if (cart.length === 0) {
-      alert('Your cart is empty.');
+      setErrorMessage('Your cart is empty.');
       return;
     }
 
@@ -81,12 +83,13 @@ const Checkout = () => {
       const token = localStorage.getItem('token');
 
       if (!token) {
-        alert('Please log in to place an order.');
-        navigate('/login');
+        setErrorMessage('Please log in to place an order.');
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
         return;
       }
 
-      // Prepare order data
       const orderData = {
         items: cart.map(item => ({
           name: item.name,
@@ -110,8 +113,6 @@ const Checkout = () => {
         paymentMethod: 'Cash on Delivery'
       };
 
-      console.log('Sending order data:', orderData);  // Debug log
-
       const response = await axios.post('/api/orders', orderData, {
         headers: { 
           'x-auth-token': token,
@@ -119,17 +120,13 @@ const Checkout = () => {
         }
       });
 
-      console.log('Order response:', response.data);  // Debug log
-
-      // Set the confirmed order and show modal
+      setErrorMessage('');
       setConfirmedOrder(response.data);
       setShowConfirmation(true);
-      
-      // Clear the cart
       clearCart();
     } catch (error) {
-      console.error('Order error:', error.response?.data || error.message);  // Detailed error log
-      alert(error.response?.data?.message || 'Failed to place order. Please try again.');
+      console.error('Order error:', error.response?.data || error.message);
+      setErrorMessage(error.response?.data?.message || 'Failed to place order. Please try again.');
     }
   };
 
@@ -140,6 +137,12 @@ const Checkout = () => {
       <Navigation />
       <div className="checkout-container">
         <h2>Checkout</h2>
+
+        {errorMessage && (
+          <div className="error-message">
+            {errorMessage}
+          </div>
+        )}
 
         <div className="section">
           <h3>Delivery Address</h3>

@@ -29,11 +29,36 @@ body {
     width: 100%;
 }
 
-/* Bearista Café Title (Left-Aligned) */
+/* paw and  */
 .navbar-brand {
-    margin-right: auto; /* Pushes nav links to the right */
-    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+    padding-left: 0; /* Remove left padding to move paw more left */
+    position: relative; /* For absolute positioning of paw */
 }
+
+.brand-paw {
+    color: white !important;
+    font-size: 24px;
+    position: absolute;
+    left: -23px; /* Position paw more to the left */
+    animation: pawWiggle 2s infinite;
+}
+
+/* Add animation keyframes for the paw */
+@keyframes pawWiggle {
+    0% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(-15deg); }
+}
+
+/* Bearista Café Title (Left-Aligned) */
+/* .navbar-brand { */
+    /* margin-right: auto; Pushes nav links to the right */
+    /* padding-left: 20px; */
+/* } */
 
 /* Styling for "Bearista Café" */
 .header-text {
@@ -174,14 +199,14 @@ body {
     }
 
     .header-text {
-        font-size: 18px;
+        font-size: 16px; /* Reduced from 18px */
     }
 
     /* Center navigation */
     .navbar-nav {
         display: flex;
         flex-direction: row;
-        gap: 10px;
+        gap: 5px; /* Reduced from 10px */
         margin: 0;
         padding: 0;
         flex: 0 1 auto;
@@ -189,16 +214,21 @@ body {
     }
 
     .nav-link {
-        font-size: 16px;
+        font-size: 14px; /* Reduced from 16px */
         white-space: nowrap;
+        padding: 0 4px; /* Added small padding */
     }
 
     /* Icons - move to right */
     .top-icons {
         display: flex;
-        gap: 10px;
+        gap: 8px; /* Reduced from 10px */
         flex: 0 0 auto;
         order: 3; /* Set order to control positioning */
         margin-left: auto; /* Push to the right */
+    }
+
+    .top-icons i {
+        font-size: 18px; /* Added to make icons slightly smaller */
     }
 }

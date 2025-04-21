@@ -4,8 +4,9 @@ export default function Navigation() {
   return (
     <nav className="navbar navbar-expand-md">
       <div className="container-fluid navbar-container">
-        {/* Left-Aligned Name */}
+        {/* Left-Aligned Name with Paw Icon */}
         <Link to="/" className="navbar-brand">
+          <i className="fas fa-paw brand-paw"></i>
           <h1 className="header-text">Bearista Café</h1>
         </Link>
 
