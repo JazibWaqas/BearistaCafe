@@ -20,10 +20,9 @@ export default function FAQ() {
         headers: token ? { 'x-auth-token': token } : {}
       });
 
-      alert(res.data.msg);  // or setMsg() to show inline
       setQuestion('');
     } catch (err) {
-      alert(err.response?.data?.msg || 'Submission failed');
+      console.error('Submission error:', err);
     }
   };
 
